@@ -1,7 +1,7 @@
 @JS('maplibregl')
 library maplibre.interop.ui.marker;
 
-import 'dart:html';
+import 'package:web/web.dart';
 import 'package:js/js.dart';
 import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
 import 'package:maplibre_gl_web/src/interop/geo/point_interop.dart';
@@ -56,8 +56,8 @@ class MarkerJsImpl extends EventedJsImpl {
   external MarkerJsImpl setLngLat(LngLatJsImpl lnglat);
 
   ///  Returns the `Marker`'s HTML element.
-  ///  @returns {HtmlElement} element
-  external HtmlElement getElement();
+  ///  @returns {HTMLElement} element
+  external HTMLElement getElement();
 
   ///  Binds a Popup to the Marker
   ///  @param popup an instance of the `Popup` class. If undefined or null, any popup
@@ -123,7 +123,7 @@ class MarkerJsImpl extends EventedJsImpl {
 @anonymous
 class MarkerOptionsJsImpl {
   external factory MarkerOptionsJsImpl({
-    HtmlElement? element,
+    HTMLElement? element,
     PointJsImpl? offset,
     String? anchor,
     String? color,

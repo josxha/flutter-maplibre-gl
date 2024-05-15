@@ -1,7 +1,7 @@
 @JS('maplibregl')
 library maplibre.interop.ui.handler.scroll_zoom;
 
-import 'dart:html';
+import 'package:web/web.dart';
 
 import 'package:js/js.dart';
 

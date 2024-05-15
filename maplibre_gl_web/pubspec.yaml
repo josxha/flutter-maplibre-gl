@@ -24,6 +24,7 @@ dependencies:
       path: maplibre_gl_platform_interface
       ref: main
   image: ^4.0.17
+  web: ^0.5.1
 
 dependency_overrides:
   maplibre_gl_platform_interface:

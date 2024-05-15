@@ -6,7 +6,7 @@ const _maplibreGlCssUrl =
 
 class MaplibreMapController extends MapLibreGlPlatform
     implements MapLibreMapOptionsSink {
-  late html.DivElement _mapElement;
+  late html.HTMLDivElement _mapElement;
 
   late Map<String, dynamic> _creationParams;
   late MapLibreMap _map;
@@ -49,7 +49,7 @@ class MaplibreMapController extends MapLibreGlPlatform
     // ignore: undefined_prefixed_name
     ui.platformViewRegistry.registerViewFactory(
         'plugins.flutter.io/mapbox_gl_$identifier', (int viewId) {
-      _mapElement = html.DivElement()
+      _mapElement = html.HTMLDivElement()
         ..style.position = 'absolute'
         ..style.top = '0'
         ..style.bottom = '0'
@@ -97,6 +97,8 @@ class MaplibreMapController extends MapLibreGlPlatform
   }
 
   void _initResizeObserver() {
+    html.ResizeObserver;
+    /* TODO
     final resizeObserver = html.ResizeObserver((entries, observer) {
       // The resize observer might be called a lot of times when the user resizes the browser window with the mouse for example.
       // Due to the fact that the resize call is quite expensive it should not be called for every triggered event but only the last one, like "onMoveEnd".
@@ -107,6 +109,7 @@ class MaplibreMapController extends MapLibreGlPlatform
       });
     });
     resizeObserver.observe(html.document.body as html.Element);
+    */
   }
 
   void _loadFromAssets(Event event) async {
@@ -176,8 +179,8 @@ class MaplibreMapController extends MapLibreGlPlatform
     }
   }
 
-  Future<void> _addStylesheetToShadowRoot(html.HtmlElement e) async {
-    final link = html.LinkElement()
+  Future<void> _addStylesheetToShadowRoot(html.HTMLElement e) async {
+    final link = html.HTMLLinkElement()
       ..href = _maplibreGlCssUrl
       ..rel = 'stylesheet';
     e.append(link);

@@ -1,6 +1,6 @@
 library maplibre.ui.map;
 
-import 'dart:html';
+import 'package:web/web.dart';
 import 'package:js/js_util.dart';
 import 'package:maplibre_gl_web/src/geo/geojson.dart';
 import 'package:maplibre_gl_web/src/geo/lng_lat.dart';
@@ -940,7 +940,7 @@ class MapLibreMap extends Camera {
   ///  Returns the map's containing HTML element.
   ///
   ///  @returns {HTMLElement} The map's container.
-  HtmlElement getContainer() => jsObject.getContainer();
+  HTMLElement getContainer() => jsObject.getContainer();
 
   ///  Returns the HTML element containing the map's `<canvas>` element.
   ///
@@ -953,7 +953,7 @@ class MapLibreMap extends Camera {
   ///  @returns {HTMLElement} The container of the map's `<canvas>`.
   ///  @see [Create a draggable point](https://maplibre.org/maplibre-gl-js/docs/examples/drag-a-point/)
   ///  @see [Highlight features within a bounding box](https://maplibre.org/maplibre-gl-js/docs/examples/using-box-queryrenderedfeatures/)
-  HtmlElement getCanvasContainer() => jsObject.getCanvasContainer();
+  HTMLElement getCanvasContainer() => jsObject.getCanvasContainer();
 
   ///  Returns the map's `<canvas>` element.
   ///
@@ -961,7 +961,7 @@ class MapLibreMap extends Camera {
   ///  @see [Measure distances](https://maplibre.org/maplibre-gl-js/docs/examples/measure/)
   ///  @see [Display a popup on hover](https://maplibre.org/maplibre-gl-js/docs/examples/popup-on-hover/)
   ///  @see [Center the map on a clicked symbol](https://maplibre.org/maplibre-gl-js/docs/examples/center-on-symbol/)
-  CanvasElement getCanvas() => jsObject.getCanvas();
+  HTMLCanvasElement getCanvas() => jsObject.getCanvas();
 
   ///  Returns a Boolean indicating whether the map is fully loaded.
   ///
@@ -1349,7 +1349,7 @@ class RequestParameters extends JsObjectWrapper<RequestParametersJsImpl> {
 ///   }
 ///
 ///   @override
-///   HtmlElement onAdd(MapLibreMap map) {
+///   HTMLElement onAdd(MapLibreMap map) {
 ///     _divElement = DivElement();
 ///     _divElement.text = 'Hello World';
 ///     return _divElement;
@@ -1365,7 +1365,7 @@ class IControl extends JsObjectWrapper<IControlJsImpl> {
   ///  Register a control on the map and give it a chance to register event listeners
   ///  and resources. This method is called by {@link MapLibreMap#addControl}
   ///  internally.
-  HtmlElement onAdd(MapLibreMap map) => jsObject.onAdd(map.jsObject);
+  HTMLElement onAdd(MapLibreMap map) => jsObject.onAdd(map.jsObject);
 
   ///  Unregister a control on the map and give it a chance to detach event listeners
   ///  and resources. This method is called by {@link MapLibreMap#removeControl}

@@ -4,7 +4,7 @@ import 'dart:async';
 
 // FIXED HERE: https://github.com/dart-lang/linter/pull/1985
 // ignore_for_file: avoid_web_libraries_in_flutter
-import 'dart:html' as html hide Event;
+import 'package:web/web.dart' as html hide Event;
 
 // ignore: unused_import
 import 'dart:js';
