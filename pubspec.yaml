@@ -5,9 +5,8 @@ repository: https://github.com/maplibre/flutter-maplibre-gl
 issue_tracker: https://github.com/maplibre/flutter-maplibre-gl/issues
 
 environment:
-  # Dart 2.15 is the required min to be able to use Enum.name
-  sdk: '>=2.15.0 <3.0.0'
-  flutter: ">=2.8.1"
+  sdk: '>=3.4.0 <4.0.0'
+  flutter: ">=3.22.0 <4.0.0"
 
 dependencies:
   flutter:
