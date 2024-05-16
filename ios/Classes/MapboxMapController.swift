@@ -217,7 +217,7 @@ class MapboxMapController: NSObject, FlutterPlatformView, MLNMapViewDelegate, Ma
             }
             var filterExpression: NSPredicate?
             if let filter = arguments["filter"] as? [Any] {
-                filterExpression = NSPredicate(mglJSONObject: filter)
+                filterExpression = NSPredicate(mlnJSONObject: filter)
             }
             var reply = [String: NSObject]()
             var features: [MLNFeature] = []
@@ -854,7 +854,7 @@ class MapboxMapController: NSObject, FlutterPlatformView, MLNMapViewDelegate, Ma
             }
             var filterExpression: NSPredicate?
             if let filter = arguments["filter"] as? [Any] {
-                filterExpression = NSPredicate(mglJSONObject: filter)
+                filterExpression = NSPredicate(mlnJSONObject: filter)
             }
             
             var reply = [String: NSObject]()
@@ -917,7 +917,7 @@ class MapboxMapController: NSObject, FlutterPlatformView, MLNMapViewDelegate, Ma
             if let vectorLayer = layer as? MLNVectorStyleLayer {
                 if let layerFilter = vectorLayer.predicate {
                     
-                    let jsonExpression = layerFilter.mgl_jsonExpressionObject
+                    let jsonExpression = layerFilter.mln_jsonExpressionObject
                     if let data = try? JSONSerialization.data(withJSONObject: jsonExpression, options: []) {
                         currentLayerFilter = String(data: data, encoding: String.Encoding.utf8) ?? ""
                     }
@@ -1418,7 +1418,7 @@ class MapboxMapController: NSObject, FlutterPlatformView, MLNMapViewDelegate, Ma
             if filter is NSNull {
                 return .success(())
             }
-            let predicate = NSPredicate(mglJSONObject: filter)
+            let predicate = NSPredicate(mlnJSONObject: filter)
             if let layer = layer as? MLNVectorStyleLayer {
                 layer.predicate = predicate
             } else {

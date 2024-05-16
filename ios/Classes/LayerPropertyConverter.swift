@@ -357,14 +357,14 @@ class LayerPropertyConverter {
 
         do {
             let json = try JSONSerialization.jsonObject(with: expression.data(using: .utf8)!, options: .fragmentsAllowed)
-            // this is required because NSExpression.init(mglJSONObject: json) fails to create
+            // this is required because NSExpression.init(mlnJSONObject: json) fails to create
             // a proper Expression if the data of is a hexString
             if isColor {
                 if let color = json as? String {
                     return NSExpression(forConstantValue: UIColor(hexString: color))
                 }
             }
-            // this is required because NSExpression.init(mglJSONObject: json) fails to create
+            // this is required because NSExpression.init(mlnJSONObject: json) fails to create
             // a proper Expression if the data of a literal is an array
             if let offset = json as? [Any]{
                 if offset.count == 2 && offset.first is String && offset.first as? String == "literal" {
@@ -378,7 +378,7 @@ class LayerPropertyConverter {
                     }
                 }
             }
-            return NSExpression.init(mglJSONObject: json)
+            return NSExpression.init(mlnJSONObject: json)
         } catch {
         }
         return nil
