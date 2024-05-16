@@ -1,7 +1,7 @@
 @JS('maplibregl')
 library maplibre.interop.geo.lng_lat_bounds;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
 
 ///  A `LngLatBounds` object represents a geographical bounding box,

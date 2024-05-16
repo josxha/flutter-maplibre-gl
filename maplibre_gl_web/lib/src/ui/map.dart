@@ -1,7 +1,8 @@
 library maplibre.ui.map;
 
 import 'dart:html';
-import 'package:js/js_util.dart';
+import 'dart:js_interop';
+import 'dart:js_util';
 import 'package:maplibre_gl_web/src/geo/geojson.dart';
 import 'package:maplibre_gl_web/src/geo/lng_lat.dart';
 import 'package:maplibre_gl_web/src/geo/lng_lat_bounds.dart';
@@ -431,7 +432,7 @@ class MapLibreMap extends Camera {
           .toList();
     }
     return jsObject
-        .queryRenderedFeatures(geometry, jsify(options))
+        .queryRenderedFeatures(geometry, options.jsify())
         .map((dynamic f) => Feature.fromJsObject(f))
         .toList();
   }
@@ -533,7 +534,7 @@ class MapLibreMap extends Camera {
     if (source is Source) {
       return MapLibreMap.fromJsObject(jsObject.addSource(id, source.jsObject));
     }
-    return MapLibreMap.fromJsObject(jsObject.addSource(id, jsify(source)));
+    return MapLibreMap.fromJsObject(jsObject.addSource(id, source.jsify()));
   }
 
   ///  Returns a Boolean indicating whether the source is loaded.
@@ -635,11 +636,11 @@ class MapLibreMap extends Camera {
   ///  @see Use `ImageData`: [Add a generated icon to the map](https://maplibre.org/maplibre-gl-js/docs/examples/add-image-generated/)
   addImage(String id, dynamic image, [Map<String, dynamic>? options]) {
     if (image is Map) {
-      image = jsify(image);
+      image = image.jsify();
     }
     return options == null
         ? jsObject.addImage(id, image)
-        : jsObject.addImage(id, image, jsify(options));
+        : jsObject.addImage(id, image, options.jsify());
   }
 
   ///  Update an existing image in a style. This image can be displayed on the map like any other icon in the style's
@@ -735,7 +736,7 @@ class MapLibreMap extends Camera {
       return MapLibreMap.fromJsObject(
           jsObject.addLayer(layer.jsObject, beforeId));
     }
-    return MapLibreMap.fromJsObject(jsObject.addLayer(jsify(layer), beforeId));
+    return MapLibreMap.fromJsObject(jsObject.addLayer(layer.jsify(), beforeId));
   }
 
   //jsObject.addLayer(layer.jsObject ?? jsify(layer));
@@ -840,7 +841,7 @@ class MapLibreMap extends Camera {
   ///  @see [Create a draggable point](https://maplibre.org/maplibre-gl-js/docs/examples/drag-a-point/)
   setPaintProperty(String layerId, String name, dynamic value,
           [StyleSetterOptions? options]) =>
-      jsObject.setPaintProperty(layerId, name, jsify(value));
+      jsObject.setPaintProperty(layerId, name, value.jsify());
 
   ///  Returns the value of a paint property in the specified style layer.
   ///

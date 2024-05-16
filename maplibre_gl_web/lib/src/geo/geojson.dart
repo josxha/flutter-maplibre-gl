@@ -1,6 +1,6 @@
 library maplibre.geo.geojson;
 
-import 'package:js/js_util.dart';
+import 'dart:js_interop';
 import 'package:maplibre_gl_web/src/interop/interop.dart';
 import 'package:maplibre_gl_web/src/utils.dart';
 
@@ -49,7 +49,7 @@ class Feature extends JsObjectWrapper<FeatureJsImpl> {
         type: 'Feature',
         id: id,
         geometry: geometry.jsObject,
-        properties: properties == null ? jsify({}) : jsify(properties),
+        properties: properties?.jsify() ?? {}.jsify(),
         source: source,
       ));
 
@@ -63,8 +63,7 @@ class Feature extends JsObjectWrapper<FeatureJsImpl> {
         type: 'Feature',
         id: id ?? this.id,
         geometry: geometry != null ? geometry.jsObject : this.geometry.jsObject,
-        properties:
-            properties != null ? jsify(properties) : jsify(this.properties),
+        properties: (properties ?? this.properties).jsify(),
         source: source ?? this.source,
       ));
 

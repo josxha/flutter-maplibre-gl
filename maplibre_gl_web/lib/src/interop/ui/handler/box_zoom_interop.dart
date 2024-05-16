@@ -3,7 +3,7 @@ library maplibre.interop.ui.handler.box_zoom;
 
 import 'dart:html';
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
 @JS()
 @anonymous

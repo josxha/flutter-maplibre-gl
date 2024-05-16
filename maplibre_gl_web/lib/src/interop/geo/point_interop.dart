@@ -1,7 +1,7 @@
 @JS('maplibregl')
 library maplibre.interop.geo.point;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
 @JS()
 @anonymous

@@ -1,7 +1,7 @@
 @JS('maplibregl')
 library maplibre.interop.ui.handler.dbclick_zoom;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:maplibre_gl_web/src/interop/ui/events_interop.dart';
 
 @JS()

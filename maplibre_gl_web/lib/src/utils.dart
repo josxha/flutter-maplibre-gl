@@ -1,4 +1,4 @@
-import 'package:js/js_util.dart' as util;
+import 'dart:js_util' as util;
 import 'interop/js.dart' as js;
 
 /// Returns Dart representation from JS Object.

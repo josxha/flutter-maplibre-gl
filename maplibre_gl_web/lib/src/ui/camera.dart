@@ -1,6 +1,7 @@
 library maplibre.ui.camera;
 
-import 'package:js/js_util.dart';
+import 'dart:js_interop';
+
 import 'package:maplibre_gl_web/src/geo/lng_lat.dart';
 import 'package:maplibre_gl_web/src/geo/lng_lat_bounds.dart';
 import 'package:maplibre_gl_web/src/geo/point.dart';
@@ -361,7 +362,7 @@ class Camera extends Evented {
           jsObject.cameraForBounds(bounds.jsObject));
     }
     return CameraOptions.fromJsObject(jsObject.cameraForBounds(bounds.jsObject,
-        options is CameraOptions ? options.jsObject : jsify(options)));
+        options is CameraOptions ? options.jsObject : options.jsify()));
   }
 
   ///  Pans and zooms the map to contain its visible area within the specified geographical bounds.
@@ -390,8 +391,8 @@ class Camera extends Evented {
   ///  @see [Fit a map to a bounding box](https://maplibre.org/maplibre-gl-js/docs/examples/fitbounds/)
   MapLibreMap fitBounds(LngLatBounds bounds,
           [Map<String, dynamic>? options, dynamic eventData]) =>
-      MapLibreMap.fromJsObject(
-          jsObject.fitBounds(bounds.jsObject, jsify(options ?? {}), eventData));
+      MapLibreMap.fromJsObject(jsObject.fitBounds(
+          bounds.jsObject, (options ?? {}).jsify(), eventData));
 
   ///  Pans, rotates and zooms the map to to fit the box made by points p0 and p1
   ///  once the map is rotated to the specified bearing. To zoom without rotating,
@@ -529,8 +530,8 @@ class Camera extends Evented {
   ///  @see [Slowly fly to a location](https://maplibre.org/maplibre-gl-js/docs/examples/flyto-options/)
   ///  @see [Fly to a location based on scroll position](https://maplibre.org/maplibre-gl-js/docs/examples/scroll-fly-to/)
   MapLibreMap flyTo(dynamic options, [String? eventData]) =>
-      MapLibreMap.fromJsObject(jsObject
-          .flyTo(options is CameraOptions ? options.jsObject : jsify(options)));
+      MapLibreMap.fromJsObject(jsObject.flyTo(
+          options is CameraOptions ? options.jsObject : options.jsify()));
 
   bool isEasing() => jsObject.isEasing();
 

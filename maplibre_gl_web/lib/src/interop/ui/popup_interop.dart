@@ -2,7 +2,7 @@
 library maplibre.interop.ui.popup;
 
 import 'dart:html';
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
 import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
 import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';

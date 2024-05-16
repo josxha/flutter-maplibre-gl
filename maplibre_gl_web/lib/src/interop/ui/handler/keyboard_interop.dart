@@ -1,7 +1,7 @@
 @JS('maplibregl')
 library maplibre.interop.ui.handler.keyboard;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
 @JS()
 @anonymous

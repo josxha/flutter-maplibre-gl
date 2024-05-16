@@ -1,7 +1,7 @@
 @JS('maplibregl')
 library maplibre.interop.style.evaluation_parameters;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
 @JS('EvaluationParameters')
 class EvaluationParametersJsImpl {

@@ -1,7 +1,7 @@
 @JS('maplibregl')
 library maplibre.interop.geo.lng_lat;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 import 'package:maplibre_gl_web/src/interop/geo/lng_lat_bounds_interop.dart';
 
 ///  A `LngLat` object represents a given longitude and latitude coordinate, measured in degrees.

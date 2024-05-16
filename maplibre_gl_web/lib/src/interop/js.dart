@@ -1,7 +1,7 @@
 @JS()
 library maplibre.interop.js;
 
-import 'package:js/js.dart';
+import 'dart:js_interop';
 
 /// This class is a wrapper for the jsObject. All the specific JsObject
 /// wrappers extend from it.
