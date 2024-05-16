@@ -1,7 +1,7 @@
 @JS('maplibregl')
 library maplibre.interop.ui.popup;
 
-import 'dart:html';
+import 'package:web/web.dart';
 import 'dart:js_interop';
 import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
 import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
@@ -98,7 +98,7 @@ class PopupJsImpl extends EventedJsImpl {
 
   /// Returns the `Popup`'s HTML element.
   /// @returns {HtmlElement} element
-  external HtmlElement getElement();
+  external HTMLElement getElement();
 
   /// Sets the popup's content to a string of text.
   ///

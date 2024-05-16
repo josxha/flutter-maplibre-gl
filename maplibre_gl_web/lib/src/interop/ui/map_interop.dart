@@ -1,7 +1,7 @@
 @JS('maplibregl')
 library maplibre.interop.ui.map;
 
-import 'dart:html';
+import 'package:web/web.dart';
 import 'dart:js_interop';
 import 'package:maplibre_gl_web/src/interop/geo/geojson_interop.dart';
 import 'package:maplibre_gl_web/src/interop/geo/lng_lat_bounds_interop.dart';
@@ -853,7 +853,7 @@ class MapLibreMapJsImpl extends CameraJsImpl {
   ///  Returns the map's containing HTML element.
   ///
   ///  @returns {HTMLElement} The map's container.
-  external HtmlElement getContainer();
+  external HTMLElement getContainer();
 
   ///  Returns the HTML element containing the map's `<canvas>` element.
   ///
@@ -866,7 +866,7 @@ class MapLibreMapJsImpl extends CameraJsImpl {
   ///  @returns {HTMLElement} The container of the map's `<canvas>`.
   ///  @see [Create a draggable point](https://maplibre.org/maplibre-gl-js/docs/examples/drag-a-point/)
   ///  @see [Highlight features within a bounding box](https://maplibre.org/maplibre-gl-js/docs/examples/using-box-queryrenderedfeatures/)
-  external HtmlElement getCanvasContainer();
+  external HTMLElement getCanvasContainer();
 
   ///  Returns the map's `<canvas>` element.
   ///
@@ -874,7 +874,7 @@ class MapLibreMapJsImpl extends CameraJsImpl {
   ///  @see [Measure distances](https://maplibre.org/maplibre-gl-js/docs/examples/measure/)
   ///  @see [Display a popup on hover](https://maplibre.org/maplibre-gl-js/docs/examples/popup-on-hover/)
   ///  @see [Center the map on a clicked symbol](https://maplibre.org/maplibre-gl-js/docs/examples/center-on-symbol/)
-  external CanvasElement getCanvas();
+  external HTMLCanvasElement getCanvas();
 
   ///  Returns a Boolean indicating whether the map is fully loaded.
   ///
@@ -1197,7 +1197,7 @@ class RequestParametersJsImpl {
 ///   }
 ///
 ///   @override
-///   HtmlElement onAdd(MapLibreMap map) {
+///   HTMLElement onAdd(MapLibreMap map) {
 ///     _divElement = DivElement();
 ///     _divElement.text = 'Hello World';
 ///     return _divElement;
@@ -1215,7 +1215,7 @@ abstract class IControlJsImpl {
   ///  Register a control on the map and give it a chance to register event listeners
   ///  and resources. This method is called by {@link MapLibreMap#addControl}
   ///  internally.
-  external HtmlElement onAdd(MapLibreMapJsImpl map);
+  external HTMLElement onAdd(MapLibreMapJsImpl map);
 
   ///  Unregister a control on the map and give it a chance to detach event listeners
   ///  and resources. This method is called by {@link MapLibreMap#removeControl}

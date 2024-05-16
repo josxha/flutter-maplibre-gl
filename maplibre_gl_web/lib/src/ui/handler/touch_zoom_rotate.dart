@@ -1,6 +1,6 @@
 library maplibre.ui.handler.touch_zoom_rotate;
 
-import 'dart:html';
+import 'package:web/web.dart';
 import 'package:maplibre_gl_web/src/interop/interop.dart';
 
 class TouchZoomRotateHandler

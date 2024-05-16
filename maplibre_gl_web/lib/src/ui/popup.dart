@@ -1,6 +1,6 @@
 library maplibre.ui.popup;
 
-import 'dart:html';
+import 'package:web/web.dart';
 import 'package:maplibre_gl_web/src/geo/lng_lat.dart';
 import 'package:maplibre_gl_web/src/interop/interop.dart';
 import 'package:maplibre_gl_web/src/ui/map.dart';
@@ -105,7 +105,7 @@ class Popup extends Evented {
 
   /// Returns the `Popup`'s HTML element.
   /// @returns {HtmlElement} element
-  HtmlElement getElement() => jsObject.getElement();
+  HTMLElement getElement() => jsObject.getElement();
 
   /// Sets the popup's content to a string of text.
   ///

@@ -1,6 +1,6 @@
 library maplibre.ui.events;
 
-import 'dart:html';
+import 'package:web/web.dart';
 
 import 'package:maplibre_gl_web/src/geo/lng_lat.dart';
 import 'package:maplibre_gl_web/src/interop/interop.dart';

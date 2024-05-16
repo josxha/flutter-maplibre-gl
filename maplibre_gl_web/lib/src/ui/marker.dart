@@ -1,6 +1,6 @@
 library maplibre.ui.marker;
 
-import 'dart:html';
+import 'package:web/web.dart';
 import 'package:maplibre_gl_web/src/geo/lng_lat.dart';
 import 'package:maplibre_gl_web/src/interop/interop.dart';
 import 'package:maplibre_gl_web/src/ui/map.dart';
@@ -60,7 +60,7 @@ class Marker extends Evented {
 
   ///  Returns the `Marker`'s HTML element.
   ///  @returns {HtmlElement} element
-  HtmlElement getElement() => jsObject.getElement();
+  HTMLElement getElement() => jsObject.getElement();
 
   ///  Binds a Popup to the Marker
   ///  @param popup an instance of the `Popup` class. If undefined or null, any popup
@@ -133,7 +133,7 @@ class Marker extends Evented {
 
 class MarkerOptions extends JsObjectWrapper<MarkerOptionsJsImpl> {
   factory MarkerOptions({
-    HtmlElement? element,
+    HTMLElement? element,
     Point? offset,
     String? anchor,
     String? color,
