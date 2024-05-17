@@ -2,7 +2,7 @@ part of maplibre_gl_web;
 
 //TODO Url taken from the Maptiler tutorial; use official and stable release once available
 final _maplibreGlCssUrl =
-    'https://unpkg.com/maplibre-gl@4.3.1/dist/maplibre-gl.css';
+    'https://unpkg.com/maplibre-gl@^4.3/dist/maplibre-gl.css';
 
 class MaplibreMapController extends MapLibreGlPlatform
     implements MapLibreMapOptionsSink {
