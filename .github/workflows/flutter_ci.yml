@@ -121,7 +121,7 @@ jobs:
           name: maplibre-flutter-demo-web
           path: example/build/web
       - name: Deploy to GitHub Pages
-        if: github.repository_owner == 'josxha' && github.ref == 'refs/heads/chore/deploy-to-github-pages'
+        if: matrix.sdk == '' && github.repository_owner == 'josxha' && github.ref == 'refs/heads/chore/deploy-to-github-pages'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
