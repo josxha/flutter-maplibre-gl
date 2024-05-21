@@ -99,7 +99,7 @@ jobs:
     name: "Build web"
     runs-on: ubuntu-latest
     defaults:
-      run:
+      run: 
         working-directory: example
     strategy:
       fail-fast: false
