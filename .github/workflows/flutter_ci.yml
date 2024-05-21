@@ -120,23 +120,8 @@ jobs:
         with:
           name: maplibre-flutter-demo-web
           path: example/build/web
-
-  deploy-web:
-    name: "Deploy to GitHub Pages"
-    if: github.repository_owner == 'josxha' && github.ref == 'refs/heads/chore/deploy-to-github-pages'
-    needs: [build-web]
-    # Grant GITHUB_TOKEN the required permissions
-    permissions:
-      # to deploy to Pages
-      pages: write
-      # to verify the deployment originates from an appropriate source
-      id-token: write
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
-    steps:
       - name: Deploy to GitHub Pages
+        if: github.repository_owner == 'josxha' && github.ref == 'refs/heads/chore/deploy-to-github-pages'
         uses: peaceiris/actions-gh-pages@v4
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
