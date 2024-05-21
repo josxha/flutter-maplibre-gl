@@ -124,7 +124,7 @@ jobs:
   deploy-web:
     if: github.repository_owner == 'josxha' && github.ref == 'refs/heads/chore/deploy-to-github-pages'
     needs: [build-web]
-    # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
+    # Grant GITHUB_TOKEN the required permissions
     permissions:
       # to deploy to Pages
       pages: write
