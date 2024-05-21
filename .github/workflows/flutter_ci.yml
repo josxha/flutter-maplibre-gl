@@ -122,6 +122,7 @@ jobs:
           path: example/build/web
 
   deploy-web:
+    name: "Deploy to GitHub Pages"
     if: github.repository_owner == 'josxha' && github.ref == 'refs/heads/chore/deploy-to-github-pages'
     needs: [build-web]
     # Grant GITHUB_TOKEN the required permissions
@@ -136,7 +137,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+        uses: peaceiris/actions-gh-pages@v4
         with:
-          artifact_name: maplibre-flutter-demo-web
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: example/build/web
