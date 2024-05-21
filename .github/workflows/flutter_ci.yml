@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ matrix.sdk == '' }}
         with:
-          name: maplibre-flutter-demo.apk
+          name: maplibre-flutter-demo-android
           path: example/build/app/outputs/flutter-apk/app-release.apk
 
   build-iOS:
@@ -92,7 +92,7 @@ jobs:
         if: ${{ matrix.sdk == '' }}
         uses: actions/upload-artifact@v4
         with:
-          name: maplibre-flutter-demo.app
+          name: maplibre-flutter-demo-ios
           path: example/build/ios/iphonesimulator
 
   build-web:
@@ -118,7 +118,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ matrix.sdk == '' }}
         with:
-          name: maplibre-flutter-demo
+          name: maplibre-flutter-demo-web
           path: example/build/web
 
   deploy-web:
@@ -139,4 +139,4 @@ jobs:
         id: deployment
         uses: actions/deploy-pages@v4
         with:
-          artifact_name: maplibre-flutter-demo
+          artifact_name: maplibre-flutter-demo-web
