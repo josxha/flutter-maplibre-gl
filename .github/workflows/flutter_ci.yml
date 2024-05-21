@@ -122,7 +122,7 @@ jobs:
           path: example/build/web
 
   deploy-web:
-    if: github.repository_owner == 'josxha' && github.ref == 'refs/heads/main'
+    if: github.repository_owner == 'josxha' && github.ref == 'refs/heads/chore/deploy-to-github-pages'
     needs: [build-web]
     # Grant GITHUB_TOKEN the permissions required to make a Pages deployment
     permissions:
