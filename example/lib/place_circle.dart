@@ -7,29 +7,17 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
+import 'package:maplibre_gl_example/main.dart';
+import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
-import 'page.dart';
-
-class PlaceCirclePage extends ExamplePage {
-  const PlaceCirclePage({super.key})
-      : super(const Icon(Icons.circle_outlined), 'Place circle');
-
-  @override
-  Widget build(BuildContext context) {
-    return const PlaceCircleBody();
-  }
-}
-
-class PlaceCircleBody extends StatefulWidget {
-  const PlaceCircleBody({super.key});
+class CirclePage extends StatefulWidget {
+  const CirclePage({super.key});
 
   @override
-  State<StatefulWidget> createState() => PlaceCircleBodyState();
+  State<StatefulWidget> createState() => _CirclePageState();
 }
 
-class PlaceCircleBodyState extends State<PlaceCircleBody> {
-  PlaceCircleBodyState();
-
+class _CirclePageState extends State<CirclePage> {
   static const LatLng center = LatLng(-33.86711, 151.1947171);
 
   MaplibreMapController? controller;
@@ -188,112 +176,115 @@ class PlaceCircleBodyState extends State<PlaceCircleBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        Center(
-          child: SizedBox(
-            width: 300.0,
-            height: 200.0,
-            child: MaplibreMap(
-              onMapCreated: _onMapCreated,
-              initialCameraPosition: const CameraPosition(
-                target: LatLng(-33.852, 151.211),
-                zoom: 11.0,
+    return ExampleScaffold(
+      page: ExamplePage.circle,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Center(
+            child: SizedBox(
+              width: 300.0,
+              height: 200.0,
+              child: MaplibreMap(
+                onMapCreated: _onMapCreated,
+                initialCameraPosition: const CameraPosition(
+                  target: LatLng(-33.852, 151.211),
+                  zoom: 11.0,
+                ),
               ),
             ),
           ),
-        ),
-        Expanded(
-          child: SingleChildScrollView(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        TextButton(
-                          onPressed: (_circleCount == 12) ? null : _add,
-                          child: const Text('add'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedCircle == null) ? null : _remove,
-                          child: const Text('remove'),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        TextButton(
-                          onPressed: (_selectedCircle == null)
-                              ? null
-                              : _changeCircleOpacity,
-                          child: const Text('change circle-opacity'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedCircle == null)
-                              ? null
-                              : _changeCircleRadius,
-                          child: const Text('change circle-radius'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedCircle == null)
-                              ? null
-                              : _changeCircleColor,
-                          child: const Text('change circle-color'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedCircle == null)
-                              ? null
-                              : _changeCircleBlur,
-                          child: const Text('change circle-blur'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedCircle == null)
-                              ? null
-                              : _changeCircleStrokeWidth,
-                          child: const Text('change circle-stroke-width'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedCircle == null)
-                              ? null
-                              : _changeCircleStrokeColor,
-                          child: const Text('change circle-stroke-color'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedCircle == null)
-                              ? null
-                              : _changeCircleStrokeOpacity,
-                          child: const Text('change circle-stroke-opacity'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedCircle == null)
-                              ? null
-                              : _changePosition,
-                          child: const Text('change position'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedCircle == null)
-                              ? null
-                              : _changeDraggable,
-                          child: const Text('toggle draggable'),
-                        ),
-                        TextButton(
-                          onPressed:
-                              (_selectedCircle == null) ? null : _getLatLng,
-                          child: const Text('get current LatLng'),
-                        ),
-                      ],
-                    ),
-                  ],
-                )
-              ],
+          Expanded(
+            child: SingleChildScrollView(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          TextButton(
+                            onPressed: (_circleCount == 12) ? null : _add,
+                            child: const Text('add'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedCircle == null) ? null : _remove,
+                            child: const Text('remove'),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          TextButton(
+                            onPressed: (_selectedCircle == null)
+                                ? null
+                                : _changeCircleOpacity,
+                            child: const Text('change circle-opacity'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedCircle == null)
+                                ? null
+                                : _changeCircleRadius,
+                            child: const Text('change circle-radius'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedCircle == null)
+                                ? null
+                                : _changeCircleColor,
+                            child: const Text('change circle-color'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedCircle == null)
+                                ? null
+                                : _changeCircleBlur,
+                            child: const Text('change circle-blur'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedCircle == null)
+                                ? null
+                                : _changeCircleStrokeWidth,
+                            child: const Text('change circle-stroke-width'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedCircle == null)
+                                ? null
+                                : _changeCircleStrokeColor,
+                            child: const Text('change circle-stroke-color'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedCircle == null)
+                                ? null
+                                : _changeCircleStrokeOpacity,
+                            child: const Text('change circle-stroke-opacity'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedCircle == null)
+                                ? null
+                                : _changePosition,
+                            child: const Text('change position'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedCircle == null)
+                                ? null
+                                : _changeDraggable,
+                            child: const Text('toggle draggable'),
+                          ),
+                          TextButton(
+                            onPressed:
+                                (_selectedCircle == null) ? null : _getLatLng,
+                            child: const Text('get current LatLng'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

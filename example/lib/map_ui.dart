@@ -7,36 +7,23 @@ import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
-
-import 'page.dart';
+import 'package:maplibre_gl_example/main.dart';
+import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
 final LatLngBounds sydneyBounds = LatLngBounds(
   southwest: const LatLng(-34.022631, 150.620685),
   northeast: const LatLng(-33.571835, 151.325952),
 );
 
-class MapUiPage extends ExamplePage {
-  const MapUiPage({super.key})
-      : super(
-          const Icon(Icons.accessibility_new_outlined),
-          'User interface',
-        );
+class UserInterfacePage extends StatefulWidget {
+  const UserInterfacePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MapUiBody();
-  }
+  State<UserInterfacePage> createState() => _UserInterfacePageState();
 }
 
-class MapUiBody extends StatefulWidget {
-  const MapUiBody({super.key});
-
-  @override
-  State<StatefulWidget> createState() => MapUiBodyState();
-}
-
-class MapUiBodyState extends State<MapUiBody> {
-  MapUiBodyState();
+class _UserInterfacePageState extends State<UserInterfacePage> {
+  _UserInterfacePageState();
 
   static const CameraPosition _kInitialPosition = CameraPosition(
     target: LatLng(-33.852, 151.211),
@@ -446,22 +433,25 @@ class MapUiBodyState extends State<MapUiBody> {
         ],
       );
     }
-    return Column(
-      mainAxisSize: MainAxisSize.min,
-      children: [
-        Center(
-          child: SizedBox(
-            width: _mapExpanded ? null : 300.0,
-            height: 200.0,
-            child: maplibreMap,
+    return ExampleScaffold(
+      page: ExamplePage.userInterface,
+      body: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Center(
+            child: SizedBox(
+              width: _mapExpanded ? null : 300.0,
+              height: 200.0,
+              child: maplibreMap,
+            ),
           ),
-        ),
-        Expanded(
-          child: ListView(
-            children: listViewChildren,
-          ),
-        )
-      ],
+          Expanded(
+            child: ListView(
+              children: listViewChildren,
+            ),
+          )
+        ],
+      ),
     );
   }
 

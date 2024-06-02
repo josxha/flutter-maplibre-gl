@@ -4,29 +4,21 @@
 
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
+import 'package:maplibre_gl_example/main.dart';
+import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
-import 'page.dart';
 import 'util.dart';
 
-class ClickAnnotationPage extends ExamplePage {
-  const ClickAnnotationPage({super.key})
-      : super(const Icon(Icons.touch_app_outlined), 'Annotation tap');
+
+class ClickAnnotationPage extends StatefulWidget {
+  const ClickAnnotationPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const ClickAnnotationBody();
-  }
+  State<ClickAnnotationPage> createState() => _ClickAnnotationPageState();
 }
 
-class ClickAnnotationBody extends StatefulWidget {
-  const ClickAnnotationBody({super.key});
-
-  @override
-  State<StatefulWidget> createState() => ClickAnnotationBodyState();
-}
-
-class ClickAnnotationBodyState extends State<ClickAnnotationBody> {
-  ClickAnnotationBodyState();
+class _ClickAnnotationPageState extends State<ClickAnnotationPage> {
+  _ClickAnnotationPageState();
 
   static const LatLng center = LatLng(-33.88, 151.16);
 
@@ -139,18 +131,21 @@ class ClickAnnotationBodyState extends State<ClickAnnotationBody> {
 
   @override
   Widget build(BuildContext context) {
-    return MaplibreMap(
-      annotationOrder: const [
-        AnnotationType.fill,
-        AnnotationType.line,
-        AnnotationType.circle,
-        AnnotationType.symbol,
-      ],
-      onMapCreated: _onMapCreated,
-      onStyleLoadedCallback: _onStyleLoaded,
-      initialCameraPosition: const CameraPosition(
-        target: center,
-        zoom: 12.0,
+    return ExampleScaffold(
+      page: ExamplePage.clickAnnotation,
+      body: MaplibreMap(
+        annotationOrder: const [
+          AnnotationType.fill,
+          AnnotationType.line,
+          AnnotationType.circle,
+          AnnotationType.symbol,
+        ],
+        onMapCreated: _onMapCreated,
+        onStyleLoadedCallback: _onStyleLoaded,
+        initialCameraPosition: const CameraPosition(
+          target: center,
+          zoom: 12.0,
+        ),
       ),
     );
   }

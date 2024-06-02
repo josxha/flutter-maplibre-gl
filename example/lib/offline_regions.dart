@@ -1,9 +1,10 @@
 import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
+import 'package:maplibre_gl_example/main.dart';
+import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
 import 'offline_region_map.dart';
-import 'page.dart';
 
 final LatLngBounds hawaiiBounds = LatLngBounds(
   southwest: const LatLng(17.26672, -161.14746),
@@ -20,31 +21,10 @@ final LatLngBounds aucklandBounds = LatLngBounds(
   northeast: const LatLng(-36.82838, 174.79745),
 );
 
-final List<OfflineRegionDefinition> regionDefinitions = [
-  OfflineRegionDefinition(
-    bounds: hawaiiBounds,
-    minZoom: 3.0,
-    maxZoom: 8.0,
-    mapStyleUrl: "https://demotiles.maplibre.org/style.json",
-  ),
-  OfflineRegionDefinition(
-    bounds: santiagoBounds,
-    minZoom: 10.0,
-    maxZoom: 16.0,
-    mapStyleUrl: "https://demotiles.maplibre.org/style.json",
-  ),
-  OfflineRegionDefinition(
-    bounds: aucklandBounds,
-    minZoom: 13.0,
-    maxZoom: 16.0,
-    mapStyleUrl: "https://demotiles.maplibre.org/style.json",
-  ),
-];
-
 final List<String> regionNames = ['Hawaii', 'Santiago', 'Auckland'];
 
 class OfflineRegionListItem {
-  OfflineRegionListItem({
+  const OfflineRegionListItem({
     required this.offlineRegionDefinition,
     required this.downloadedId,
     required this.isDownloading,
@@ -75,21 +55,36 @@ class OfflineRegionListItem {
 
 final List<OfflineRegionListItem> allRegions = [
   OfflineRegionListItem(
-    offlineRegionDefinition: regionDefinitions[0],
+    offlineRegionDefinition: OfflineRegionDefinition(
+      bounds: hawaiiBounds,
+      minZoom: 3.0,
+      maxZoom: 8.0,
+      mapStyleUrl: "https://demotiles.maplibre.org/style.json",
+    ),
     downloadedId: null,
     isDownloading: false,
     name: regionNames[0],
     estimatedTiles: 61,
   ),
   OfflineRegionListItem(
-    offlineRegionDefinition: regionDefinitions[1],
+    offlineRegionDefinition: OfflineRegionDefinition(
+      bounds: santiagoBounds,
+      minZoom: 10.0,
+      maxZoom: 16.0,
+      mapStyleUrl: "https://demotiles.maplibre.org/style.json",
+    ),
     downloadedId: null,
     isDownloading: false,
     name: regionNames[1],
     estimatedTiles: 3580,
   ),
   OfflineRegionListItem(
-    offlineRegionDefinition: regionDefinitions[2],
+    offlineRegionDefinition: OfflineRegionDefinition(
+      bounds: aucklandBounds,
+      minZoom: 13.0,
+      maxZoom: 16.0,
+      mapStyleUrl: "https://demotiles.maplibre.org/style.json",
+    ),
     downloadedId: null,
     isDownloading: false,
     name: regionNames[2],
@@ -97,25 +92,14 @@ final List<OfflineRegionListItem> allRegions = [
   ),
 ];
 
-class OfflineRegionsPage extends ExamplePage {
-  const OfflineRegionsPage({super.key})
-      : super(
-            const Icon(Icons.download_for_offline_outlined), 'Offline Regions');
+class OfflineRegionsPage extends StatefulWidget {
+  const OfflineRegionsPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const OfflineRegionBody();
-  }
+  State<OfflineRegionsPage> createState() => _OfflineRegionsBodyState();
 }
 
-class OfflineRegionBody extends StatefulWidget {
-  const OfflineRegionBody({super.key});
-
-  @override
-  State<OfflineRegionBody> createState() => _OfflineRegionsBodyState();
-}
-
-class _OfflineRegionsBodyState extends State<OfflineRegionBody> {
+class _OfflineRegionsBodyState extends State<OfflineRegionsPage> {
   final List<OfflineRegionListItem> _items = [];
 
   @override
@@ -126,58 +110,61 @@ class _OfflineRegionsBodyState extends State<OfflineRegionBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Stack(
-      children: <Widget>[
-        ListView.builder(
-          padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
-          itemCount: _items.length,
-          itemBuilder: (context, index) => Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              IconButton(
-                icon: const Icon(Icons.map),
-                onPressed: () => _goToMap(_items[index]),
-              ),
-              Column(
-                mainAxisSize: MainAxisSize.min,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(
-                    _items[index].name,
-                    style: const TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  Text(
-                    'Est. tiles: ${_items[index].estimatedTiles}',
-                    style: const TextStyle(
-                      fontSize: 16,
-                    ),
-                  ),
-                ],
-              ),
-              const Spacer(),
-              _items[index].isDownloading
-                  ? const SizedBox(
-                      height: 16,
-                      width: 16,
-                      child: CircularProgressIndicator(),
-                    )
-                  : IconButton(
-                      icon: Icon(
-                        _items[index].isDownloaded
-                            ? Icons.delete
-                            : Icons.file_download,
+    return ExampleScaffold(
+      page: ExamplePage.offlineRegions,
+      body: Stack(
+        children: <Widget>[
+          ListView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 0, vertical: 8),
+            itemCount: _items.length,
+            itemBuilder: (context, index) => Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                IconButton(
+                  icon: const Icon(Icons.map),
+                  onPressed: () => _goToMap(_items[index]),
+                ),
+                Column(
+                  mainAxisSize: MainAxisSize.min,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: <Widget>[
+                    Text(
+                      _items[index].name,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
                       ),
-                      onPressed: _items[index].isDownloaded
-                          ? () => _deleteRegion(_items[index], index)
-                          : () => _downloadRegion(_items[index], index),
                     ),
-            ],
+                    Text(
+                      'Est. tiles: ${_items[index].estimatedTiles}',
+                      style: const TextStyle(
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+                const Spacer(),
+                _items[index].isDownloading
+                    ? const SizedBox(
+                        height: 16,
+                        width: 16,
+                        child: CircularProgressIndicator(),
+                      )
+                    : IconButton(
+                        icon: Icon(
+                          _items[index].isDownloaded
+                              ? Icons.delete
+                              : Icons.file_download,
+                        ),
+                        onPressed: _items[index].isDownloaded
+                            ? () => _deleteRegion(_items[index], index)
+                            : () => _downloadRegion(_items[index], index),
+                      ),
+              ],
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 

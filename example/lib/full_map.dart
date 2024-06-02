@@ -1,26 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
+import 'package:maplibre_gl_example/main.dart';
+import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
-import 'page.dart';
-
-class FullMapPage extends ExamplePage {
-  const FullMapPage({super.key})
-      : super(const Icon(Icons.fullscreen), 'Full screen map');
-
-  @override
-  Widget build(BuildContext context) {
-    return const FullMap();
-  }
-}
-
-class FullMap extends StatefulWidget {
-  const FullMap({super.key});
+class FullscreenMapPage extends StatefulWidget {
+  const FullscreenMapPage({super.key});
 
   @override
-  State createState() => FullMapState();
+  State<FullscreenMapPage> createState() => _FullscreenMapPageState();
 }
 
-class FullMapState extends State<FullMap> {
+class _FullscreenMapPageState extends State<FullscreenMapPage> {
   MaplibreMapController? mapController;
   var isLight = true;
 
@@ -40,22 +30,24 @@ class FullMapState extends State<FullMap> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-        // TODO: commented out when cherry-picking https://github.com/flutter-mapbox-gl/maps/pull/775
-        // needs different dark and light styles in this repo
-        // floatingActionButton: Padding(
-        // padding: const EdgeInsets.all(32.0),
-        // child: FloatingActionButton(
-        // child: Icon(Icons.swap_horiz),
-        // onPressed: () => setState(
-        // () => isLight = !isLight,
-        // ),
-        // ),
-        // ),
-        body: MaplibreMap(
-      onMapCreated: _onMapCreated,
-      initialCameraPosition: const CameraPosition(target: LatLng(0.0, 0.0)),
-      onStyleLoadedCallback: _onStyleLoadedCallback,
-    ));
+    return ExampleScaffold(
+      page: ExamplePage.fullscreen,
+      // TODO: commented out when cherry-picking https://github.com/flutter-mapbox-gl/maps/pull/775
+      // needs different dark and light styles in this repo
+      // floatingActionButton: Padding(
+      // padding: const EdgeInsets.all(32.0),
+      // child: FloatingActionButton(
+      // child: Icon(Icons.swap_horiz),
+      // onPressed: () => setState(
+      // () => isLight = !isLight,
+      // ),
+      // ),
+      // ),
+      body: MaplibreMap(
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: const CameraPosition(target: LatLng(0.0, 0.0)),
+        onStyleLoadedCallback: _onStyleLoadedCallback,
+      ),
+    );
   }
 }

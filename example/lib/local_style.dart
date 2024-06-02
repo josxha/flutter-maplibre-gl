@@ -2,28 +2,18 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
+import 'package:maplibre_gl_example/main.dart';
+import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'page.dart';
-
-class LocalStylePage extends ExamplePage {
-  const LocalStylePage({super.key})
-      : super(const Icon(Icons.language), 'Local style');
+class LocalStylePage extends StatefulWidget {
+  const LocalStylePage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const LocalStyle();
-  }
+  State<LocalStylePage> createState() => _LocalStylePageState();
 }
 
-class LocalStyle extends StatefulWidget {
-  const LocalStyle({super.key});
-
-  @override
-  State createState() => LocalStyleState();
-}
-
-class LocalStyleState extends State<LocalStyle> {
+class _LocalStylePageState extends State<LocalStylePage> {
   MaplibreMapController? mapController;
   String? styleAbsoluteFilePath;
 
@@ -63,13 +53,15 @@ class LocalStyleState extends State<LocalStyle> {
       );
     }
 
-    return Scaffold(
-        body: MaplibreMap(
-      styleString: styleAbsoluteFilePath,
-      onMapCreated: _onMapCreated,
-      initialCameraPosition: const CameraPosition(target: LatLng(0.0, 0.0)),
-      onStyleLoadedCallback: onStyleLoadedCallback,
-    ));
+    return ExampleScaffold(
+      page: ExamplePage.localStyle,
+      body: MaplibreMap(
+        styleString: styleAbsoluteFilePath,
+        onMapCreated: _onMapCreated,
+        initialCameraPosition: const CameraPosition(target: LatLng(0.0, 0.0)),
+        onStyleLoadedCallback: onStyleLoadedCallback,
+      ),
+    );
   }
 
   void onStyleLoadedCallback() {}

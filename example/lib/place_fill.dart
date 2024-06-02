@@ -7,30 +7,18 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
+import 'package:maplibre_gl_example/main.dart';
+import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
-import 'page.dart';
 
-class PlaceFillPage extends ExamplePage {
-  const PlaceFillPage({super.key})
-      : super(const Icon(Icons.format_shapes_outlined), 'Place fill');
-
-  @override
-  Widget build(BuildContext context) {
-    return const PlaceFillBody();
-  }
-}
-
-class PlaceFillBody extends StatefulWidget {
-  const PlaceFillBody({super.key});
+class FillPage extends StatefulWidget {
+  const FillPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => PlaceFillBodyState();
+  State<StatefulWidget> createState() => _FillPageState();
 }
 
-class PlaceFillBodyState extends State<PlaceFillBody> {
-  PlaceFillBodyState();
-
-  static const LatLng center = LatLng(-33.86711, 151.1947171);
+class _FillPageState extends State<FillPage> {
   final String _fillPatternImage = "assets/fill/cat_silhouette_pattern.png";
 
   final List<List<LatLng>> _defaultGeometry = [
@@ -64,7 +52,7 @@ class PlaceFillBodyState extends State<PlaceFillBody> {
       required delta,
       required origin,
       required point,
-      required eventType}) {
+      required eventType,}) {
     DragEventType type = eventType;
     switch (type) {
       case DragEventType.start:
@@ -186,87 +174,90 @@ class PlaceFillBodyState extends State<PlaceFillBody> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: <Widget>[
-        Center(
-          child: SizedBox(
-            width: 300.0,
-            height: 200.0,
-            child: MaplibreMap(
-              onMapCreated: _onMapCreated,
-              onStyleLoadedCallback: _onStyleLoaded,
-              initialCameraPosition: const CameraPosition(
-                target: LatLng(-33.852, 151.211),
-                zoom: 7.0,
+    return ExampleScaffold(
+      page: ExamplePage.fill,
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: <Widget>[
+          Center(
+            child: SizedBox(
+              width: 300.0,
+              height: 200.0,
+              child: MaplibreMap(
+                onMapCreated: _onMapCreated,
+                onStyleLoadedCallback: _onStyleLoaded,
+                initialCameraPosition: const CameraPosition(
+                  target: LatLng(-33.852, 151.211),
+                  zoom: 7.0,
+                ),
               ),
             ),
           ),
-        ),
-        Expanded(
-          child: SingleChildScrollView(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <Widget>[
-                Row(
-                  children: <Widget>[
-                    Column(
-                      children: <Widget>[
-                        TextButton(
-                          onPressed: (_fillCount == 12) ? null : _add,
-                          child: const Text('add'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedFill == null) ? null : _remove,
-                          child: const Text('remove'),
-                        ),
-                      ],
-                    ),
-                    Column(
-                      children: <Widget>[
-                        TextButton(
-                          onPressed: (_selectedFill == null)
-                              ? null
-                              : _changeFillOpacity,
-                          child: const Text('change fill-opacity'),
-                        ),
-                        TextButton(
-                          onPressed:
-                              (_selectedFill == null) ? null : _changeFillColor,
-                          child: const Text('change fill-color'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedFill == null)
-                              ? null
-                              : _changeFillOutlineColor,
-                          child: const Text('change fill-outline-color'),
-                        ),
-                        TextButton(
-                          onPressed: (_selectedFill == null)
-                              ? null
-                              : _changeFillPattern,
-                          child: const Text('change fill-pattern'),
-                        ),
-                        TextButton(
-                          onPressed:
-                              (_selectedFill == null) ? null : _changePosition,
-                          child: const Text('change position'),
-                        ),
-                        TextButton(
-                          onPressed:
-                              (_selectedFill == null) ? null : _changeDraggable,
-                          child: const Text('toggle draggable'),
-                        ),
-                      ],
-                    ),
-                  ],
-                )
-              ],
+          Expanded(
+            child: SingleChildScrollView(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: <Widget>[
+                  Row(
+                    children: <Widget>[
+                      Column(
+                        children: <Widget>[
+                          TextButton(
+                            onPressed: (_fillCount == 12) ? null : _add,
+                            child: const Text('add'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedFill == null) ? null : _remove,
+                            child: const Text('remove'),
+                          ),
+                        ],
+                      ),
+                      Column(
+                        children: <Widget>[
+                          TextButton(
+                            onPressed: (_selectedFill == null)
+                                ? null
+                                : _changeFillOpacity,
+                            child: const Text('change fill-opacity'),
+                          ),
+                          TextButton(
+                            onPressed:
+                                (_selectedFill == null) ? null : _changeFillColor,
+                            child: const Text('change fill-color'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedFill == null)
+                                ? null
+                                : _changeFillOutlineColor,
+                            child: const Text('change fill-outline-color'),
+                          ),
+                          TextButton(
+                            onPressed: (_selectedFill == null)
+                                ? null
+                                : _changeFillPattern,
+                            child: const Text('change fill-pattern'),
+                          ),
+                          TextButton(
+                            onPressed:
+                                (_selectedFill == null) ? null : _changePosition,
+                            child: const Text('change position'),
+                          ),
+                          TextButton(
+                            onPressed:
+                                (_selectedFill == null) ? null : _changeDraggable,
+                            child: const Text('toggle draggable'),
+                          ),
+                        ],
+                      ),
+                    ],
+                  )
+                ],
+              ),
             ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }

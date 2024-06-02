@@ -3,25 +3,19 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
-import 'package:maplibre_gl_example/page.dart';
+import 'package:maplibre_gl_example/main.dart';
+import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
 import 'util.dart';
 
-class LayerPage extends ExamplePage {
-  const LayerPage({super.key}) : super(const Icon(Icons.share), 'Layer');
+class LayerPage extends StatefulWidget {
+  const LayerPage({super.key});
 
   @override
-  Widget build(BuildContext context) => const LayerBody();
+  State<LayerPage> createState() => _LayerPageState();
 }
 
-class LayerBody extends StatefulWidget {
-  const LayerBody({super.key});
-
-  @override
-  State<StatefulWidget> createState() => LayerState();
-}
-
-class LayerState extends State {
+class _LayerPageState extends State<LayerPage> {
   static const LatLng center = LatLng(-33.86711, 151.1947171);
 
   late MaplibreMapController controller;
@@ -39,104 +33,107 @@ class LayerState extends State {
 
   @override
   Widget build(BuildContext context) {
-    return ListView(children: <Widget>[
-      Center(
-        child: SizedBox(
-            height: 400.0,
-            child: MaplibreMap(
-              dragEnabled: false,
-              myLocationEnabled: true,
-              onMapCreated: _onMapCreated,
-              onMapClick: (point, latLong) =>
-                  debugPrint(point.toString() + latLong.toString()),
-              onStyleLoadedCallback: _onStyleLoadedCallback,
-              initialCameraPosition: const CameraPosition(
-                target: center,
-                zoom: 11.0,
-              ),
-              annotationOrder: const [],
-            )),
-      ),
-      TextButton(
-        onPressed: () {
-          controller
-              .setLayerProperties(
-                  "lines",
-                  LineLayerProperties.fromJson(
-                      {"visibility": linesVisible ? "none" : "visible"}))
-              .then((value) => setState(() => linesVisible = !linesVisible));
-        },
-        child: const Text('toggle line visibility'),
-      ),
-      TextButton(
-        onPressed: () {
-          controller
-              .setLayerProperties(
-                  "lines",
-                  LineLayerProperties.fromJson(
-                      {"line-color": linesRed ? "#0000ff" : "#ff0000"}))
-              .then((value) => setState(() => linesRed = !linesRed));
-        },
-        child: const Text('toggle line color'),
-      ),
-      TextButton(
-        onPressed: () {
-          controller
-              .setLayerProperties(
-                  "fills",
-                  FillLayerProperties.fromJson(
-                      {"visibility": fillsVisible ? "none" : "visible"}))
-              .then((value) => setState(() => fillsVisible = !fillsVisible));
-        },
-        child: const Text('toggle fill visibility'),
-      ),
-      TextButton(
-        onPressed: () {
-          controller
-              .setLayerProperties(
-                  "fills",
-                  FillLayerProperties.fromJson(
-                      {"fill-color": fillsRed ? "#0000ff" : "#ff0000"}))
-              .then((value) => setState(() => fillsRed = !fillsRed));
-        },
-        child: const Text('toggle fill color'),
-      ),
-      TextButton(
-        onPressed: () {
-          controller
-              .setLayerProperties(
-                  "circles",
-                  CircleLayerProperties.fromJson(
-                      {"visibility": circlesVisible ? "none" : "visible"}))
-              .then(
-                  (value) => setState(() => circlesVisible = !circlesVisible));
-        },
-        child: const Text('toggle circle visibility'),
-      ),
-      TextButton(
-        onPressed: () {
-          controller
-              .setLayerProperties(
-                  "circles",
-                  CircleLayerProperties.fromJson(
-                      {"circle-color": circlesRed ? "#0000ff" : "#ff0000"}))
-              .then((value) => setState(() => circlesRed = !circlesRed));
-        },
-        child: const Text('toggle circle color'),
-      ),
-      TextButton(
-        onPressed: () {
-          controller
-              .setLayerProperties(
-                  "symbols",
-                  SymbolLayerProperties.fromJson(
-                      {"visibility": symbolsVisible ? "none" : "visible"}))
-              .then(
-                  (value) => setState(() => symbolsVisible = !symbolsVisible));
-        },
-        child: const Text('toggle (non-moving) symbols visibility'),
-      ),
-    ]);
+    return ExampleScaffold(
+      page: ExamplePage.layer,
+      body: ListView(children: <Widget>[
+        Center(
+          child: SizedBox(
+              height: 400.0,
+              child: MaplibreMap(
+                dragEnabled: false,
+                myLocationEnabled: true,
+                onMapCreated: _onMapCreated,
+                onMapClick: (point, latLong) =>
+                    debugPrint(point.toString() + latLong.toString()),
+                onStyleLoadedCallback: _onStyleLoadedCallback,
+                initialCameraPosition: const CameraPosition(
+                  target: center,
+                  zoom: 11.0,
+                ),
+                annotationOrder: const [],
+              )),
+        ),
+        TextButton(
+          onPressed: () {
+            controller
+                .setLayerProperties(
+                    "lines",
+                    LineLayerProperties.fromJson(
+                        {"visibility": linesVisible ? "none" : "visible"}))
+                .then((value) => setState(() => linesVisible = !linesVisible));
+          },
+          child: const Text('toggle line visibility'),
+        ),
+        TextButton(
+          onPressed: () {
+            controller
+                .setLayerProperties(
+                    "lines",
+                    LineLayerProperties.fromJson(
+                        {"line-color": linesRed ? "#0000ff" : "#ff0000"}))
+                .then((value) => setState(() => linesRed = !linesRed));
+          },
+          child: const Text('toggle line color'),
+        ),
+        TextButton(
+          onPressed: () {
+            controller
+                .setLayerProperties(
+                    "fills",
+                    FillLayerProperties.fromJson(
+                        {"visibility": fillsVisible ? "none" : "visible"}))
+                .then((value) => setState(() => fillsVisible = !fillsVisible));
+          },
+          child: const Text('toggle fill visibility'),
+        ),
+        TextButton(
+          onPressed: () {
+            controller
+                .setLayerProperties(
+                    "fills",
+                    FillLayerProperties.fromJson(
+                        {"fill-color": fillsRed ? "#0000ff" : "#ff0000"}))
+                .then((value) => setState(() => fillsRed = !fillsRed));
+          },
+          child: const Text('toggle fill color'),
+        ),
+        TextButton(
+          onPressed: () {
+            controller
+                .setLayerProperties(
+                    "circles",
+                    CircleLayerProperties.fromJson(
+                        {"visibility": circlesVisible ? "none" : "visible"}))
+                .then(
+                    (value) => setState(() => circlesVisible = !circlesVisible));
+          },
+          child: const Text('toggle circle visibility'),
+        ),
+        TextButton(
+          onPressed: () {
+            controller
+                .setLayerProperties(
+                    "circles",
+                    CircleLayerProperties.fromJson(
+                        {"circle-color": circlesRed ? "#0000ff" : "#ff0000"}))
+                .then((value) => setState(() => circlesRed = !circlesRed));
+          },
+          child: const Text('toggle circle color'),
+        ),
+        TextButton(
+          onPressed: () {
+            controller
+                .setLayerProperties(
+                    "symbols",
+                    SymbolLayerProperties.fromJson(
+                        {"visibility": symbolsVisible ? "none" : "visible"}))
+                .then(
+                    (value) => setState(() => symbolsVisible = !symbolsVisible));
+          },
+          child: const Text('toggle (non-moving) symbols visibility'),
+        ),
+      ]),
+    );
   }
 
   void _onMapCreated(MaplibreMapController controller) {
