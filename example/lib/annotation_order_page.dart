@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:maplibre_gl_example/main.dart';
-import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
+import 'package:maplibre_gl_example/common/example_scaffold.dart';
 
-import 'util.dart';
+import 'common/util.dart';
 
 class AnnotationOrderPage extends StatefulWidget {
   const AnnotationOrderPage({super.key});

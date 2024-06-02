@@ -8,8 +8,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart'; // ignore: unnecessary_import
 import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:maplibre_gl_example/main.dart';
-import 'package:maplibre_gl_example/util.dart';
-import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
+import 'package:maplibre_gl_example/common/util.dart';
+import 'package:maplibre_gl_example/common/example_scaffold.dart';
 
 class ScrollingMapPage extends StatefulWidget {
   const ScrollingMapPage({super.key});

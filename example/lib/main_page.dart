@@ -6,41 +6,40 @@ import 'package:flutter/material.dart';
 import 'package:location/location.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:maplibre_gl_example/main.dart';
-import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
+import 'package:maplibre_gl_example/common/example_scaffold.dart';
 import 'package:url_launcher/url_launcher_string.dart';
 
 const _categories = <String, List<CategoryItem>>{
   'General': <CategoryItem>[
-    CategoryItem(ExamplePage.userInterface, Icons.accessibility_new_outlined),
     CategoryItem(ExamplePage.fullscreen, Icons.fullscreen),
     CategoryItem(ExamplePage.localized, Icons.language),
-    CategoryItem(ExamplePage.moveCamera, Icons.control_camera),
-    CategoryItem(ExamplePage.moveCameraAnimated, Icons.animation),
     CategoryItem(ExamplePage.localStyle, Icons.language),
     CategoryItem(ExamplePage.scrolling, Icons.map_outlined),
     CategoryItem(
         ExamplePage.offlineRegions, Icons.download_for_offline_outlined),
-    CategoryItem(ExamplePage.setMapBounds, Icons.control_camera),
     CategoryItem(ExamplePage.mapState, Icons.info_outline),
     CategoryItem(ExamplePage.noLocationPermission, Icons.gps_off),
+    CategoryItem(ExamplePage.variousSources, Icons.layers_outlined),
+    CategoryItem(ExamplePage.attribution, Icons.thumb_up_alt_outlined),
   ],
-  'Map Features': <CategoryItem>[
+  'Interactivity': <CategoryItem>[
+    CategoryItem(ExamplePage.userInterface, Icons.accessibility_new_outlined),
+    CategoryItem(ExamplePage.moveCamera, Icons.control_camera),
+    CategoryItem(ExamplePage.moveCameraAnimated, Icons.animation),
+    CategoryItem(ExamplePage.setMapBounds, Icons.control_camera),
+  ],
+  'Annotations': <CategoryItem>[
     CategoryItem(ExamplePage.symbol, Icons.place_outlined),
     CategoryItem(ExamplePage.source, Icons.place_outlined),
     CategoryItem(ExamplePage.line, Icons.share),
     CategoryItem(ExamplePage.layer, Icons.layers_outlined),
     CategoryItem(ExamplePage.circle, Icons.circle_outlined),
     CategoryItem(ExamplePage.fill, Icons.format_shapes_outlined),
-    CategoryItem(
-      ExamplePage.batchOperation,
-      Icons.list_alt,
-    ),
+    CategoryItem(ExamplePage.batchOperation, Icons.list_alt),
     CategoryItem(ExamplePage.annotationOrder, Icons.layers_outlined),
     CategoryItem(ExamplePage.customMarker, Icons.place_outlined),
     CategoryItem(ExamplePage.clickAnnotation, Icons.touch_app_outlined),
-    CategoryItem(ExamplePage.variousSources, Icons.layers_outlined),
-    CategoryItem(ExamplePage.attribution, Icons.thumb_up_alt_outlined),
-  ]
+  ],
 };
 
 class MainPage extends StatefulWidget {
@@ -116,7 +115,7 @@ class MainPageState extends State<MainPage> {
             leading: const Icon(Icons.info_outline),
             onTap: () => showLicensePage(
               context: context,
-              applicationName: 'MapLibre Example App',
+              applicationName: 'MapLibre Examples',
             ),
           ),
           ListTile(

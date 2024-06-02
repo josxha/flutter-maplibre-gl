@@ -8,7 +8,7 @@ import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:maplibre_gl_example/main.dart';
-import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
+import 'package:maplibre_gl_example/common/example_scaffold.dart';
 
 final LatLngBounds sydneyBounds = LatLngBounds(
   southwest: const LatLng(-34.022631, 150.620685),

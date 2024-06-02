@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:maplibre_gl_example/main.dart';
 import 'package:maplibre_gl_example/offline_region_map_page.dart';
-import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
+import 'package:maplibre_gl_example/common/example_scaffold.dart';
 
 final LatLngBounds hawaiiBounds = LatLngBounds(
   southwest: const LatLng(17.26672, -161.14746),
