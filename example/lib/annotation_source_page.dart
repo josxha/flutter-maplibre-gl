@@ -10,15 +10,15 @@ import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:maplibre_gl_example/main.dart';
 import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
-class SourcePage extends StatefulWidget {
-  const SourcePage({super.key});
+class AnnotationSourcePage extends StatefulWidget {
+  const AnnotationSourcePage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _SourcePageState();
+  State<StatefulWidget> createState() => _AnnotationSourcePageState();
 }
 
-class _SourcePageState extends State<SourcePage> {
-  _SourcePageState();
+class _AnnotationSourcePageState extends State<AnnotationSourcePage> {
+  _AnnotationSourcePageState();
 
   static const sourceId = 'sydney_source';
   static const layerId = 'sydney_layer';

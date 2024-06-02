@@ -2,9 +2,8 @@ import 'package:collection/collection.dart' show IterableExtension;
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:maplibre_gl_example/main.dart';
+import 'package:maplibre_gl_example/offline_region_map_page.dart';
 import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
-
-import 'offline_region_map.dart';
 
 final LatLngBounds hawaiiBounds = LatLngBounds(
   southwest: const LatLng(17.26672, -161.14746),
@@ -246,7 +245,7 @@ class _OfflineRegionsBodyState extends State<OfflineRegionsPage> {
   _goToMap(OfflineRegionListItem item) {
     Navigator.of(context).push(
       MaterialPageRoute<void>(
-        builder: (_) => OfflineRegionMap(item),
+        builder: (_) => OfflineRegionMapPage(item),
       ),
     );
   }

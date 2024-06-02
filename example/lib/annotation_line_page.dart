@@ -10,15 +10,15 @@ import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:maplibre_gl_example/main.dart';
 import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
-class LinePage extends StatefulWidget {
-  const LinePage({super.key});
+class AnnotationLinePage extends StatefulWidget {
+  const AnnotationLinePage({super.key});
 
   @override
-  State<LinePage> createState() => _LinePageState();
+  State<AnnotationLinePage> createState() => _AnnotationLinePageState();
 }
 
-class _LinePageState extends State<LinePage> {
-  _LinePageState();
+class _AnnotationLinePageState extends State<AnnotationLinePage> {
+  _AnnotationLinePageState();
 
   MaplibreMapController? controller;
   int _lineCount = 0;

@@ -10,14 +10,14 @@ import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:maplibre_gl_example/main.dart';
 import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
-class CirclePage extends StatefulWidget {
-  const CirclePage({super.key});
+class AnnotationCirclePage extends StatefulWidget {
+  const AnnotationCirclePage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _CirclePageState();
+  State<StatefulWidget> createState() => _AnnotationCirclePageState();
 }
 
-class _CirclePageState extends State<CirclePage> {
+class _AnnotationCirclePageState extends State<AnnotationCirclePage> {
   static const LatLng center = LatLng(-33.86711, 151.1947171);
 
   MaplibreMapController? controller;

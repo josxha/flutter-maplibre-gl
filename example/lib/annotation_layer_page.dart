@@ -8,14 +8,14 @@ import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
 import 'util.dart';
 
-class LayerPage extends StatefulWidget {
-  const LayerPage({super.key});
+class AnnotationLayerPage extends StatefulWidget {
+  const AnnotationLayerPage({super.key});
 
   @override
-  State<LayerPage> createState() => _LayerPageState();
+  State<AnnotationLayerPage> createState() => _AnnotationLayerPageState();
 }
 
-class _LayerPageState extends State<LayerPage> {
+class _AnnotationLayerPageState extends State<AnnotationLayerPage> {
   static const LatLng center = LatLng(-33.86711, 151.1947171);
 
   late MaplibreMapController controller;

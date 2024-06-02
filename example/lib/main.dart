@@ -1,30 +1,29 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_web_plugins/url_strategy.dart';
-import 'package:maplibre_gl_example/attribution.dart';
-import 'package:maplibre_gl_example/given_bounds.dart';
-import 'package:maplibre_gl_example/localized_map.dart';
+import 'package:maplibre_gl_example/annotation_circle_page.dart';
+import 'package:maplibre_gl_example/annotation_fill_page.dart';
+import 'package:maplibre_gl_example/annotation_layer_page.dart';
+import 'package:maplibre_gl_example/annotation_line_page.dart';
+import 'package:maplibre_gl_example/annotation_order_page.dart';
+import 'package:maplibre_gl_example/annotation_source_page.dart';
+import 'package:maplibre_gl_example/annotation_symbol_page.dart';
+import 'package:maplibre_gl_example/attribution_page.dart';
+import 'package:maplibre_gl_example/batch_operation_page.dart';
+import 'package:maplibre_gl_example/click_annotations_page.dart';
+import 'package:maplibre_gl_example/custom_marker_page.dart';
+import 'package:maplibre_gl_example/fullscreen_map_page.dart';
+import 'package:maplibre_gl_example/local_style_page.dart';
+import 'package:maplibre_gl_example/localized_map_page.dart';
 import 'package:maplibre_gl_example/main_page.dart';
-import 'package:maplibre_gl_example/map_state.dart';
+import 'package:maplibre_gl_example/map_state_page.dart';
+import 'package:maplibre_gl_example/move_camera_animated.dart';
+import 'package:maplibre_gl_example/move_camera_page.dart';
 import 'package:maplibre_gl_example/no_location_permission_page.dart';
-
-import 'animate_camera.dart';
-import 'annotation_order_maps.dart';
-import 'click_annotations.dart';
-import 'custom_marker.dart';
-import 'full_map.dart';
-import 'layer.dart';
-import 'line.dart';
-import 'local_style.dart';
-import 'map_ui.dart';
-import 'move_camera.dart';
-import 'offline_regions.dart';
-import 'place_batch.dart';
-import 'place_circle.dart';
-import 'place_fill.dart';
-import 'place_source.dart';
-import 'place_symbol.dart';
-import 'scrolling_map.dart';
-import 'sources.dart';
+import 'package:maplibre_gl_example/offline_regions_page.dart';
+import 'package:maplibre_gl_example/scrolling_map_page.dart';
+import 'package:maplibre_gl_example/set_map_bounds_page.dart';
+import 'package:maplibre_gl_example/user_interface_page.dart';
+import 'package:maplibre_gl_example/various_sources_page.dart';
 
 final routes = <String, WidgetBuilder>{
   ExamplePage.main.path: (context) => const MainPage(),
@@ -40,12 +39,12 @@ final routes = <String, WidgetBuilder>{
   ExamplePage.mapState.path: (context) => const MapStatePage(),
   ExamplePage.noLocationPermission.path: (context) =>
       const NoLocationPermissionPage(),
-  ExamplePage.symbol.path: (context) => const SymbolPage(),
-  ExamplePage.source.path: (context) => const SourcePage(),
-  ExamplePage.line.path: (context) => const LinePage(),
-  ExamplePage.layer.path: (context) => const LayerPage(),
-  ExamplePage.circle.path: (context) => const CirclePage(),
-  ExamplePage.fill.path: (context) => const FillPage(),
+  ExamplePage.symbol.path: (context) => const AnnotationSymbolPage(),
+  ExamplePage.source.path: (context) => const AnnotationSourcePage(),
+  ExamplePage.line.path: (context) => const AnnotationLinePage(),
+  ExamplePage.layer.path: (context) => const AnnotationLayerPage(),
+  ExamplePage.circle.path: (context) => const AnnotationCirclePage(),
+  ExamplePage.fill.path: (context) => const AnnotationFillPage(),
   ExamplePage.batchOperation.path: (context) => const BatchOperationPage(),
   ExamplePage.annotationOrder.path: (context) => const AnnotationOrderPage(),
   ExamplePage.customMarker.path: (context) => const CustomMarkerPage(),

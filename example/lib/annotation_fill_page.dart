@@ -11,14 +11,14 @@ import 'package:maplibre_gl_example/main.dart';
 import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
 
-class FillPage extends StatefulWidget {
-  const FillPage({super.key});
+class AnnotationFillPage extends StatefulWidget {
+  const AnnotationFillPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _FillPageState();
+  State<StatefulWidget> createState() => _AnnotationFillPageState();
 }
 
-class _FillPageState extends State<FillPage> {
+class _AnnotationFillPageState extends State<AnnotationFillPage> {
   final String _fillPatternImage = "assets/fill/cat_silhouette_pattern.png";
 
   final List<List<LatLng>> _defaultGeometry = [

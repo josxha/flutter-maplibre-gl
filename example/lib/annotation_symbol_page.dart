@@ -13,15 +13,15 @@ import 'package:maplibre_gl/maplibre_gl.dart';
 import 'package:maplibre_gl_example/main.dart';
 import 'package:maplibre_gl_example/widgets/example_scaffold.dart';
 
-class SymbolPage extends StatefulWidget {
-  const SymbolPage({super.key});
+class AnnotationSymbolPage extends StatefulWidget {
+  const AnnotationSymbolPage({super.key});
 
   @override
-  State<StatefulWidget> createState() => _SymbolPageState();
+  State<StatefulWidget> createState() => _AnnotationSymbolPageState();
 }
 
-class _SymbolPageState extends State<SymbolPage> {
-  _SymbolPageState();
+class _AnnotationSymbolPageState extends State<AnnotationSymbolPage> {
+  _AnnotationSymbolPageState();
 
   static const LatLng center = LatLng(-33.86711, 151.1947171);
 
