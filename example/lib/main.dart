@@ -63,7 +63,7 @@ enum ExamplePage {
   localStyle('/local-style', 'Local style'),
   scrolling('/scrolling', 'Scrolling map'),
   offlineRegions('/offline-regions', 'Offline regions'),
-  setMapBounds('/given-bounds', 'Change given bounds'),
+  setMapBounds('/set-map-bounds', 'Set map bounds'),
   mapState('/map-info', 'Get map state'),
   noLocationPermission('/no-location-permission', 'No user location permission',
       needsLocationPermission: false),

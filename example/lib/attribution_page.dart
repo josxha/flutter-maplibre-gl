@@ -21,15 +21,21 @@ class _AttributionPageState extends State<AttributionPage> {
       body: Column(
         children: [
           const Text("Set attribution position"),
-          Wrap(
-            children: [
-              buildDefaultPositionButton(),
-              buildPositionButton(null),
-              buildPositionButton(AttributionButtonPosition.topRight),
-              buildPositionButton(AttributionButtonPosition.topLeft),
-              buildPositionButton(AttributionButtonPosition.bottomRight),
-              buildPositionButton(AttributionButtonPosition.bottomLeft),
-            ],
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              spacing: 8,
+              runSpacing: 8,
+              children: [
+                buildDefaultPositionButton(),
+                buildPositionButton(null),
+                buildPositionButton(AttributionButtonPosition.topRight),
+                buildPositionButton(AttributionButtonPosition.topLeft),
+                buildPositionButton(AttributionButtonPosition.bottomRight),
+                buildPositionButton(AttributionButtonPosition.bottomLeft),
+              ],
+            ),
           ),
           Expanded(
             child: buildMap(

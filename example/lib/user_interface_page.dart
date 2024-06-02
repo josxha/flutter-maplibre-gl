@@ -7,8 +7,8 @@ import 'dart:math';
 import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
-import 'package:maplibre_gl_example/main.dart';
 import 'package:maplibre_gl_example/common/example_scaffold.dart';
+import 'package:maplibre_gl_example/main.dart';
 
 final LatLngBounds sydneyBounds = LatLngBounds(
   southwest: const LatLng(-34.022631, 150.620685),
@@ -407,12 +407,6 @@ class _UserInterfacePageState extends State<UserInterfacePage> {
     if (mapController != null) {
       listViewChildren.addAll(
         <Widget>[
-          Text('camera bearing: ${_position.bearing}'),
-          Text('camera target: ${_position.target.latitude.toStringAsFixed(4)},'
-              '${_position.target.longitude.toStringAsFixed(4)}'),
-          Text('camera zoom: ${_position.zoom}'),
-          Text('camera tilt: ${_position.tilt}'),
-          Text(_isMoving ? '(Camera moving)' : '(Camera idle)'),
           _mapSizeToggler(),
           _queryFilterToggler(),
           _compassToggler(),
@@ -435,22 +429,51 @@ class _UserInterfacePageState extends State<UserInterfacePage> {
     }
     return ExampleScaffold(
       page: ExamplePage.userInterface,
-      body: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Center(
-            child: SizedBox(
-              width: _mapExpanded ? null : 300.0,
-              height: 200.0,
-              child: maplibreMap,
+      body: Center(
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: Wrap(
+                alignment: WrapAlignment.center,
+                children: listViewChildren,
+              ),
             ),
-          ),
-          Expanded(
-            child: ListView(
-              children: listViewChildren,
+            Expanded(
+              child: Stack(
+                children: [
+                  SizedBox(
+                    width: _mapExpanded ? null : 300.0,
+                    child: maplibreMap,
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    alignment: Alignment.topCenter,
+                    child: Card(
+                      child: Padding(
+                        padding: const EdgeInsets.all(8.0),
+                        child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Text('Camera',
+                                style: TextStyle(fontWeight: FontWeight.bold)),
+                            Text(
+                              'bearing: ${_position.bearing}, target: ${_position.target.latitude.toStringAsFixed(4)},'
+                                  '${_position.target.longitude.toStringAsFixed(4)}\n'
+                                  'zoom: ${_position.zoom}, camera tilt: ${_position.tilt}',
+                              textAlign: TextAlign.center,
+                            ),
+                            Text(_isMoving ? '(Camera moving)' : '(Camera idle)'),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
-          )
-        ],
+          ],
+        ),
       ),
     );
   }
