@@ -429,51 +429,49 @@ class _UserInterfacePageState extends State<UserInterfacePage> {
     }
     return ExampleScaffold(
       page: ExamplePage.userInterface,
-      body: Center(
-        child: Column(
-          children: [
-            Padding(
-              padding: const EdgeInsets.all(8),
-              child: Wrap(
-                alignment: WrapAlignment.center,
-                children: listViewChildren,
-              ),
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Wrap(
+              alignment: WrapAlignment.center,
+              children: listViewChildren,
             ),
-            Expanded(
-              child: Stack(
-                children: [
-                  SizedBox(
-                    width: _mapExpanded ? null : 300.0,
-                    child: maplibreMap,
-                  ),
-                  Container(
-                    padding: const EdgeInsets.all(8),
-                    alignment: Alignment.topCenter,
-                    child: Card(
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: Column(
-                          mainAxisSize: MainAxisSize.min,
-                          children: [
-                            const Text('Camera',
-                                style: TextStyle(fontWeight: FontWeight.bold)),
-                            Text(
-                              'bearing: ${_position.bearing}, target: ${_position.target.latitude.toStringAsFixed(4)},'
-                                  '${_position.target.longitude.toStringAsFixed(4)}\n'
-                                  'zoom: ${_position.zoom}, camera tilt: ${_position.tilt}',
-                              textAlign: TextAlign.center,
-                            ),
-                            Text(_isMoving ? '(Camera moving)' : '(Camera idle)'),
-                          ],
-                        ),
+          ),
+          Expanded(
+            child: Stack(
+              children: [
+                SizedBox(
+                  width: _mapExpanded ? null : 300.0,
+                  child: maplibreMap,
+                ),
+                Container(
+                  padding: const EdgeInsets.all(8),
+                  alignment: Alignment.topCenter,
+                  child: Card(
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Text('Camera',
+                              style: TextStyle(fontWeight: FontWeight.bold)),
+                          Text(
+                            'bearing: ${_position.bearing}, target: ${_position.target.latitude.toStringAsFixed(4)},'
+                                '${_position.target.longitude.toStringAsFixed(4)}\n'
+                                'zoom: ${_position.zoom}, camera tilt: ${_position.tilt}',
+                            textAlign: TextAlign.center,
+                          ),
+                          Text(_isMoving ? '(Camera moving)' : '(Camera idle)'),
+                        ],
                       ),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
