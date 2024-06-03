@@ -15,7 +15,7 @@ jobs:
       - name: Get Flutter dependencies
         run: flutter pub get
       - name: Update CocoaPods
-        working-directory: ios
+        working-directory: example/ios
         run: |
           pod repo update && \
           pod update
