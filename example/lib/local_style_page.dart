@@ -2,8 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
-import 'package:maplibre_gl_example/main.dart';
 import 'package:maplibre_gl_example/common/example_scaffold.dart';
+import 'package:maplibre_gl_example/main.dart';
+import 'package:maplibre_gl_platform_interface/maplibre_gl_platform_interface.dart';
 import 'package:path_provider/path_provider.dart';
 
 class LocalStylePage extends StatefulWidget {
@@ -24,8 +25,7 @@ class _LocalStylePageState extends State<LocalStylePage> {
     getApplicationDocumentsDirectory().then((dir) async {
       String documentDir = dir.path;
       String stylesDir = '$documentDir/styles';
-      String styleJSON =
-          '{"version":8,"name":"Demo style","center":[50,10],"zoom":4,"sources":{"demotiles":{"type":"vector","url":"https://demotiles.maplibre.org/tiles/tiles.json"}},"sprite":"","glyphs":"https://orangemug.github.io/font-glyphs/glyphs/{fontstack}/{range}.pbf","layers":[{"id":"background","type":"background","paint":{"background-color":"rgba(255, 255, 255, 1)"}},{"id":"countries","type":"line","source":"demotiles","source-layer":"countries","paint":{"line-color":"rgba(0, 0, 0, 1)","line-width":1,"line-opacity":1}}]}';
+      String styleJSON = MaplibreStyles.demo;
 
       await Directory(stylesDir).create(recursive: true);
 
@@ -48,7 +48,8 @@ class _LocalStylePageState extends State<LocalStylePage> {
     final styleAbsoluteFilePath = this.styleAbsoluteFilePath;
 
     if (styleAbsoluteFilePath == null) {
-      return const Scaffold(
+      return const ExampleScaffold(
+        page: ExamplePage.localStyle,
         body: Center(child: Text('Creating local style file...')),
       );
     }
