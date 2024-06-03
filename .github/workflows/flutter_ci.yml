@@ -113,7 +113,7 @@ jobs:
           cache: true
       - run: flutter pub get
       - name: Build web
-        run: flutter build web --base-href /flutter-maplibre-gl/demo
+        run: flutter build web --base-href /flutter-maplibre-gl/demo/
       - name: Deploy to GitHub Pages
         if: matrix.sdk == '' && github.repository_owner == 'josxha' && github.ref == 'refs/heads/chore/deploy-to-github-pages'
         uses: peaceiris/actions-gh-pages@v4
