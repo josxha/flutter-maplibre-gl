@@ -20,6 +20,27 @@ final LatLngBounds aucklandBounds = LatLngBounds(
   northeast: const LatLng(-36.82838, 174.79745),
 );
 
+final List<OfflineRegionDefinition> regionDefinitions = [
+  OfflineRegionDefinition(
+    bounds: hawaiiBounds,
+    minZoom: 3.0,
+    maxZoom: 8.0,
+    mapStyleUrl: MaplibreStyles.demo,
+  ),
+  OfflineRegionDefinition(
+    bounds: santiagoBounds,
+    minZoom: 10.0,
+    maxZoom: 16.0,
+    mapStyleUrl: MaplibreStyles.demo,
+  ),
+  OfflineRegionDefinition(
+    bounds: aucklandBounds,
+    minZoom: 13.0,
+    maxZoom: 16.0,
+    mapStyleUrl: MaplibreStyles.demo,
+  ),
+];
+
 final List<String> regionNames = ['Hawaii', 'Santiago', 'Auckland'];
 
 class OfflineRegionListItem {
@@ -54,36 +75,21 @@ class OfflineRegionListItem {
 
 final List<OfflineRegionListItem> allRegions = [
   OfflineRegionListItem(
-    offlineRegionDefinition: OfflineRegionDefinition(
-      bounds: hawaiiBounds,
-      minZoom: 3.0,
-      maxZoom: 8.0,
-      mapStyleUrl: "https://demotiles.maplibre.org/style.json",
-    ),
+    offlineRegionDefinition: regionDefinitions[0],
     downloadedId: null,
     isDownloading: false,
     name: regionNames[0],
     estimatedTiles: 61,
   ),
   OfflineRegionListItem(
-    offlineRegionDefinition: OfflineRegionDefinition(
-      bounds: santiagoBounds,
-      minZoom: 10.0,
-      maxZoom: 16.0,
-      mapStyleUrl: "https://demotiles.maplibre.org/style.json",
-    ),
+    offlineRegionDefinition: regionDefinitions[1],
     downloadedId: null,
     isDownloading: false,
     name: regionNames[1],
     estimatedTiles: 3580,
   ),
   OfflineRegionListItem(
-    offlineRegionDefinition: OfflineRegionDefinition(
-      bounds: aucklandBounds,
-      minZoom: 13.0,
-      maxZoom: 16.0,
-      mapStyleUrl: "https://demotiles.maplibre.org/style.json",
-    ),
+    offlineRegionDefinition: regionDefinitions[2],
     downloadedId: null,
     isDownloading: false,
     name: regionNames[2],
