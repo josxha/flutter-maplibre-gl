@@ -257,143 +257,128 @@ class _AnnotationSymbolPageState extends State<AnnotationSymbolPage> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      page: ExamplePage.symbol,
+      page: ExamplePage.annotationSymbol,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Center(
-            child: SizedBox(
-              width: 300.0,
-              height: 200.0,
-              child: MaplibreMap(
-                onMapCreated: _onMapCreated,
-                onStyleLoadedCallback: _onStyleLoaded,
-                initialCameraPosition: const CameraPosition(
-                  target: LatLng(-33.852, 151.211),
-                  zoom: 11.0,
-                ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              TextButton(
+                child: const Text('add'),
+                onPressed: () => (_symbolCount == 12)
+                    ? null
+                    : _add("custom-marker"),
               ),
-            ),
+              TextButton(
+                child: const Text('add all'),
+                onPressed: () => (_symbolCount == 12)
+                    ? null
+                    : _addAll("custom-marker"),
+              ),
+              TextButton(
+                child: const Text('add (custom icon)'),
+                onPressed: () => (_symbolCount == 12)
+                    ? null
+                    : _add("assets/symbols/custom-icon.png"),
+              ),
+              TextButton(
+                onPressed: (_selectedSymbol == null) ? null : _remove,
+                child: const Text('remove'),
+              ),
+              TextButton(
+                onPressed: _changeIconOverlap,
+                child: Text(
+                    '${_iconAllowOverlap ? 'disable' : 'enable'} icon overlap'),
+              ),
+              TextButton(
+                onPressed: (_symbolCount == 0) ? null : _removeAll,
+                child: const Text('remove all'),
+              ),
+              TextButton(
+                child: const Text('add (asset image)'),
+                onPressed: () => (_symbolCount == 12)
+                    ? null
+                    : _add(
+                        "assetImage"), //assetImage added to the style in _onStyleLoaded
+              ),
+              TextButton(
+                child: const Text('add (network image)'),
+                onPressed: () => (_symbolCount == 12)
+                    ? null
+                    : _add(
+                        "networkImage"), //networkImage added to the style in _onStyleLoaded
+              ),
+              TextButton(
+                child: const Text('add (custom font)'),
+                onPressed: () =>
+                    (_symbolCount == 12) ? null : _add("customFont"),
+              )
+            ],
+          ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              TextButton(
+                onPressed:
+                    (_selectedSymbol == null) ? null : _changeAlpha,
+                child: const Text('change alpha'),
+              ),
+              TextButton(
+                onPressed: (_selectedSymbol == null)
+                    ? null
+                    : _changeIconOffset,
+                child: const Text('change icon offset'),
+              ),
+              TextButton(
+                onPressed: (_selectedSymbol == null)
+                    ? null
+                    : _changeIconAnchor,
+                child: const Text('change icon anchor'),
+              ),
+              TextButton(
+                onPressed: (_selectedSymbol == null)
+                    ? null
+                    : _toggleDraggable,
+                child: const Text('toggle draggable'),
+              ),
+              TextButton(
+                onPressed: (_selectedSymbol == null)
+                    ? null
+                    : _changePosition,
+                child: const Text('change position'),
+              ),
+              TextButton(
+                onPressed: (_selectedSymbol == null)
+                    ? null
+                    : _changeRotation,
+                child: const Text('change rotation'),
+              ),
+              TextButton(
+                onPressed:
+                    (_selectedSymbol == null) ? null : _toggleVisible,
+                child: const Text('toggle visible'),
+              ),
+              TextButton(
+                onPressed:
+                    (_selectedSymbol == null) ? null : _changeZIndex,
+                child: const Text('change zIndex'),
+              ),
+              TextButton(
+                onPressed:
+                    (_selectedSymbol == null) ? null : _getLatLng,
+                child: const Text('get current LatLng'),
+              ),
+            ],
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          TextButton(
-                            child: const Text('add'),
-                            onPressed: () => (_symbolCount == 12)
-                                ? null
-                                : _add("custom-marker"),
-                          ),
-                          TextButton(
-                            child: const Text('add all'),
-                            onPressed: () => (_symbolCount == 12)
-                                ? null
-                                : _addAll("custom-marker"),
-                          ),
-                          TextButton(
-                            child: const Text('add (custom icon)'),
-                            onPressed: () => (_symbolCount == 12)
-                                ? null
-                                : _add("assets/symbols/custom-icon.png"),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedSymbol == null) ? null : _remove,
-                            child: const Text('remove'),
-                          ),
-                          TextButton(
-                            onPressed: _changeIconOverlap,
-                            child: Text(
-                                '${_iconAllowOverlap ? 'disable' : 'enable'} icon overlap'),
-                          ),
-                          TextButton(
-                            onPressed: (_symbolCount == 0) ? null : _removeAll,
-                            child: const Text('remove all'),
-                          ),
-                          TextButton(
-                            child: const Text('add (asset image)'),
-                            onPressed: () => (_symbolCount == 12)
-                                ? null
-                                : _add(
-                                    "assetImage"), //assetImage added to the style in _onStyleLoaded
-                          ),
-                          TextButton(
-                            child: const Text('add (network image)'),
-                            onPressed: () => (_symbolCount == 12)
-                                ? null
-                                : _add(
-                                    "networkImage"), //networkImage added to the style in _onStyleLoaded
-                          ),
-                          TextButton(
-                            child: const Text('add (custom font)'),
-                            onPressed: () =>
-                                (_symbolCount == 12) ? null : _add("customFont"),
-                          )
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          TextButton(
-                            onPressed:
-                                (_selectedSymbol == null) ? null : _changeAlpha,
-                            child: const Text('change alpha'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedSymbol == null)
-                                ? null
-                                : _changeIconOffset,
-                            child: const Text('change icon offset'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedSymbol == null)
-                                ? null
-                                : _changeIconAnchor,
-                            child: const Text('change icon anchor'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedSymbol == null)
-                                ? null
-                                : _toggleDraggable,
-                            child: const Text('toggle draggable'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedSymbol == null)
-                                ? null
-                                : _changePosition,
-                            child: const Text('change position'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedSymbol == null)
-                                ? null
-                                : _changeRotation,
-                            child: const Text('change rotation'),
-                          ),
-                          TextButton(
-                            onPressed:
-                                (_selectedSymbol == null) ? null : _toggleVisible,
-                            child: const Text('toggle visible'),
-                          ),
-                          TextButton(
-                            onPressed:
-                                (_selectedSymbol == null) ? null : _changeZIndex,
-                            child: const Text('change zIndex'),
-                          ),
-                          TextButton(
-                            onPressed:
-                                (_selectedSymbol == null) ? null : _getLatLng,
-                            child: const Text('get current LatLng'),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
+            child: MaplibreMap(
+              onMapCreated: _onMapCreated,
+              onStyleLoadedCallback: _onStyleLoaded,
+              initialCameraPosition: const CameraPosition(
+                target: LatLng(-33.852, 151.211),
+                zoom: 11.0,
               ),
             ),
           ),

@@ -134,46 +134,31 @@ class _BatchOperationPageState extends State<BatchOperationPage> {
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Center(
-            child: SizedBox(
-              height: 200.0,
-              child: MaplibreMap(
-                onMapCreated: _onMapCreated,
-                onStyleLoadedCallback: () => addImageFromAsset(controller,
-                    "custom-marker", "assets/symbols/custom-marker.png"),
-                initialCameraPosition: const CameraPosition(
-                  target: LatLng(-33.8, 151.511),
-                  zoom: 8.2,
-                ),
-                annotationOrder: const [
-                  AnnotationType.fill,
-                  AnnotationType.line,
-                  AnnotationType.circle,
-                  AnnotationType.symbol,
-                ],
-              ),
-            ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              TextButton(
+                  onPressed: _add, child: const Text('batch add')),
+              TextButton(
+                  onPressed: _remove,
+                  child: const Text('batch remove')),
+            ],
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          TextButton(
-                              onPressed: _add, child: const Text('batch add')),
-                          TextButton(
-                              onPressed: _remove,
-                              child: const Text('batch remove')),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
+            child: MaplibreMap(
+              onMapCreated: _onMapCreated,
+              onStyleLoadedCallback: () => addImageFromAsset(controller,
+                  "custom-marker", "assets/symbols/custom-marker.png"),
+              initialCameraPosition: const CameraPosition(
+                target: LatLng(-33.8, 151.511),
+                zoom: 8.2,
               ),
+              annotationOrder: const [
+                AnnotationType.fill,
+                AnnotationType.line,
+                AnnotationType.circle,
+                AnnotationType.symbol,
+              ],
             ),
           ),
         ],

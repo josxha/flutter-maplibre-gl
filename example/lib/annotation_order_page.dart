@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
-import 'package:maplibre_gl_example/main.dart';
 import 'package:maplibre_gl_example/common/example_scaffold.dart';
+import 'package:maplibre_gl_example/main.dart';
 
 import 'common/util.dart';
 
@@ -24,41 +24,37 @@ class _AnnotationOrderPageState extends State<AnnotationOrderPage> {
       page: ExamplePage.annotationOrder,
       body: Column(
         children: <Widget>[
-          Card(
+          Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 0.0),
               child: Column(
                 children: <Widget>[
                   const Padding(
-                    padding: EdgeInsets.only(bottom: 5.0),
+                    padding: EdgeInsets.symmetric(vertical: 5.0),
                     child: Text(
-                        'This map has polygones (fill) above all other anotations (default behavior)'),
+                        'This map has polygons (fill) above all other annotations (default behavior)'),
                   ),
-                  Center(
-                    child: SizedBox(
-                      width: 250.0,
-                      height: 250.0,
-                      child: MaplibreMap(
-                        onMapCreated: onMapCreatedOne,
-                        onStyleLoadedCallback: () => onStyleLoaded(controllerOne),
-                        initialCameraPosition: CameraPosition(
-                          target: center,
-                          zoom: 5.0,
-                        ),
-                        annotationOrder: const [
-                          AnnotationType.line,
-                          AnnotationType.symbol,
-                          AnnotationType.circle,
-                          AnnotationType.fill,
-                        ],
+                  Flexible(
+                    child: MaplibreMap(
+                      onMapCreated: onMapCreatedOne,
+                      onStyleLoadedCallback: () => onStyleLoaded(controllerOne),
+                      initialCameraPosition: CameraPosition(
+                        target: center,
+                        zoom: 5.0,
                       ),
+                      annotationOrder: const [
+                        AnnotationType.line,
+                        AnnotationType.symbol,
+                        AnnotationType.circle,
+                        AnnotationType.fill,
+                      ],
                     ),
                   ),
                 ],
               ),
             ),
           ),
-          Card(
+          Expanded(
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 0.0),
               child: Column(
@@ -68,24 +64,20 @@ class _AnnotationOrderPageState extends State<AnnotationOrderPage> {
                     child: Text(
                         'This map has polygones (fill) under all other anotations'),
                   ),
-                  Center(
-                    child: SizedBox(
-                      width: 250.0,
-                      height: 250.0,
-                      child: MaplibreMap(
-                        onMapCreated: onMapCreatedTwo,
-                        onStyleLoadedCallback: () => onStyleLoaded(controllerTwo),
-                        initialCameraPosition: CameraPosition(
-                          target: center,
-                          zoom: 5.0,
-                        ),
-                        annotationOrder: const [
-                          AnnotationType.fill,
-                          AnnotationType.line,
-                          AnnotationType.symbol,
-                          AnnotationType.circle,
-                        ],
+                  Flexible(
+                    child: MaplibreMap(
+                      onMapCreated: onMapCreatedTwo,
+                      onStyleLoadedCallback: () => onStyleLoaded(controllerTwo),
+                      initialCameraPosition: CameraPosition(
+                        target: center,
+                        zoom: 5.0,
                       ),
+                      annotationOrder: const [
+                        AnnotationType.fill,
+                        AnnotationType.line,
+                        AnnotationType.symbol,
+                        AnnotationType.circle,
+                      ],
                     ),
                   ),
                 ],

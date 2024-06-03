@@ -177,109 +177,92 @@ class _AnnotationCirclePageState extends State<AnnotationCirclePage> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      page: ExamplePage.circle,
+      page: ExamplePage.annotationCircle,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Center(
-            child: SizedBox(
-              width: 300.0,
-              height: 200.0,
-              child: MaplibreMap(
-                onMapCreated: _onMapCreated,
-                initialCameraPosition: const CameraPosition(
-                  target: LatLng(-33.852, 151.211),
-                  zoom: 11.0,
-                ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              TextButton(
+                onPressed: (_circleCount == 12) ? null : _add,
+                child: const Text('add'),
               ),
-            ),
+              TextButton(
+                onPressed: (_selectedCircle == null) ? null : _remove,
+                child: const Text('remove'),
+              ),
+            ],
+          ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              TextButton(
+                onPressed: (_selectedCircle == null)
+                    ? null
+                    : _changeCircleOpacity,
+                child: const Text('change circle-opacity'),
+              ),
+              TextButton(
+                onPressed: (_selectedCircle == null)
+                    ? null
+                    : _changeCircleRadius,
+                child: const Text('change circle-radius'),
+              ),
+              TextButton(
+                onPressed: (_selectedCircle == null)
+                    ? null
+                    : _changeCircleColor,
+                child: const Text('change circle-color'),
+              ),
+              TextButton(
+                onPressed: (_selectedCircle == null)
+                    ? null
+                    : _changeCircleBlur,
+                child: const Text('change circle-blur'),
+              ),
+              TextButton(
+                onPressed: (_selectedCircle == null)
+                    ? null
+                    : _changeCircleStrokeWidth,
+                child: const Text('change circle-stroke-width'),
+              ),
+              TextButton(
+                onPressed: (_selectedCircle == null)
+                    ? null
+                    : _changeCircleStrokeColor,
+                child: const Text('change circle-stroke-color'),
+              ),
+              TextButton(
+                onPressed: (_selectedCircle == null)
+                    ? null
+                    : _changeCircleStrokeOpacity,
+                child: const Text('change circle-stroke-opacity'),
+              ),
+              TextButton(
+                onPressed: (_selectedCircle == null)
+                    ? null
+                    : _changePosition,
+                child: const Text('change position'),
+              ),
+              TextButton(
+                onPressed: (_selectedCircle == null)
+                    ? null
+                    : _changeDraggable,
+                child: const Text('toggle draggable'),
+              ),
+              TextButton(
+                onPressed:
+                (_selectedCircle == null) ? null : _getLatLng,
+                child: const Text('get current LatLng'),
+              ),
+            ],
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          TextButton(
-                            onPressed: (_circleCount == 12) ? null : _add,
-                            child: const Text('add'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedCircle == null) ? null : _remove,
-                            child: const Text('remove'),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          TextButton(
-                            onPressed: (_selectedCircle == null)
-                                ? null
-                                : _changeCircleOpacity,
-                            child: const Text('change circle-opacity'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedCircle == null)
-                                ? null
-                                : _changeCircleRadius,
-                            child: const Text('change circle-radius'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedCircle == null)
-                                ? null
-                                : _changeCircleColor,
-                            child: const Text('change circle-color'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedCircle == null)
-                                ? null
-                                : _changeCircleBlur,
-                            child: const Text('change circle-blur'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedCircle == null)
-                                ? null
-                                : _changeCircleStrokeWidth,
-                            child: const Text('change circle-stroke-width'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedCircle == null)
-                                ? null
-                                : _changeCircleStrokeColor,
-                            child: const Text('change circle-stroke-color'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedCircle == null)
-                                ? null
-                                : _changeCircleStrokeOpacity,
-                            child: const Text('change circle-stroke-opacity'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedCircle == null)
-                                ? null
-                                : _changePosition,
-                            child: const Text('change position'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedCircle == null)
-                                ? null
-                                : _changeDraggable,
-                            child: const Text('toggle draggable'),
-                          ),
-                          TextButton(
-                            onPressed:
-                                (_selectedCircle == null) ? null : _getLatLng,
-                            child: const Text('get current LatLng'),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
+            child: MaplibreMap(
+              onMapCreated: _onMapCreated,
+              initialCameraPosition: const CameraPosition(
+                target: LatLng(-33.852, 151.211),
+                zoom: 11.0,
               ),
             ),
           ),

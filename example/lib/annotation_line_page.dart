@@ -137,86 +137,72 @@ class _AnnotationLinePageState extends State<AnnotationLinePage> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      page: ExamplePage.line,
+      page: ExamplePage.annotationLine,
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Center(
-            child: SizedBox(
-              height: 400.0,
-              child: MaplibreMap(
-                onMapCreated: _onMapCreated,
-                onStyleLoadedCallback: _onStyleLoadedCallback,
-                initialCameraPosition: const CameraPosition(
-                  target: LatLng(-33.852, 151.211),
-                  zoom: 11.0,
-                ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              TextButton(
+                onPressed: (_lineCount == 12) ? null : _add,
+                child: const Text('add'),
               ),
-            ),
+              TextButton(
+                onPressed: (_selectedLine == null) ? null : _remove,
+                child: const Text('remove'),
+              ),
+              TextButton(
+                onPressed: (_selectedLine == null)
+                    ? null
+                    : () async {
+                        await _move();
+                      },
+                child: const Text('move'),
+              ),
+              TextButton(
+                onPressed: (_selectedLine == null)
+                    ? null
+                    : _changeLinePattern,
+                child: const Text('change line-pattern'),
+              ),
+            ],
+          ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              TextButton(
+                onPressed:
+                    (_selectedLine == null) ? null : _changeAlpha,
+                child: const Text('change alpha'),
+              ),
+              TextButton(
+                onPressed:
+                    (_selectedLine == null) ? null : _toggleVisible,
+                child: const Text('toggle visible'),
+              ),
+              TextButton(
+                onPressed: (_selectedLine == null)
+                    ? null
+                    : () async {
+                        var latLngs = await controller!
+                            .getLineLatLngs(_selectedLine!);
+                        for (var latLng in latLngs) {
+                          debugPrint(latLng.toString());
+                        }
+                      },
+                child: const Text('print current LatLng'),
+              ),
+            ],
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Column(
-                    children: <Widget>[
-                      Row(
-                        children: <Widget>[
-                          TextButton(
-                            onPressed: (_lineCount == 12) ? null : _add,
-                            child: const Text('add'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedLine == null) ? null : _remove,
-                            child: const Text('remove'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedLine == null)
-                                ? null
-                                : () async {
-                                    await _move();
-                                  },
-                            child: const Text('move'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedLine == null)
-                                ? null
-                                : _changeLinePattern,
-                            child: const Text('change line-pattern'),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: <Widget>[
-                          TextButton(
-                            onPressed:
-                                (_selectedLine == null) ? null : _changeAlpha,
-                            child: const Text('change alpha'),
-                          ),
-                          TextButton(
-                            onPressed:
-                                (_selectedLine == null) ? null : _toggleVisible,
-                            child: const Text('toggle visible'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedLine == null)
-                                ? null
-                                : () async {
-                                    var latLngs = await controller!
-                                        .getLineLatLngs(_selectedLine!);
-                                    for (var latLng in latLngs) {
-                                      debugPrint(latLng.toString());
-                                    }
-                                  },
-                            child: const Text('print current LatLng'),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                ],
+            child: MaplibreMap(
+              onMapCreated: _onMapCreated,
+              onStyleLoadedCallback: _onStyleLoadedCallback,
+              initialCameraPosition: const CameraPosition(
+                target: LatLng(-33, 151),
+                zoom: 7,
               ),
             ),
           ),

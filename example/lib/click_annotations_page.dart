@@ -44,7 +44,7 @@ class _ClickAnnotationPageState extends State<ClickAnnotationPage> {
   _showSnackBar(String type, String id) {
     final snackBar = SnackBar(
         content: Text(
-          'Tapped $type $id',
+          'Tapped $type with id "$id"',
           style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,

@@ -175,84 +175,67 @@ class _AnnotationFillPageState extends State<AnnotationFillPage> {
   @override
   Widget build(BuildContext context) {
     return ExampleScaffold(
-      page: ExamplePage.fill,
+      page: ExamplePage.annotationFill,
       body: Column(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        crossAxisAlignment: CrossAxisAlignment.stretch,
         children: <Widget>[
-          Center(
-            child: SizedBox(
-              width: 300.0,
-              height: 200.0,
-              child: MaplibreMap(
-                onMapCreated: _onMapCreated,
-                onStyleLoadedCallback: _onStyleLoaded,
-                initialCameraPosition: const CameraPosition(
-                  target: LatLng(-33.852, 151.211),
-                  zoom: 7.0,
-                ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              TextButton(
+                onPressed: (_fillCount == 12) ? null : _add,
+                child: const Text('add'),
               ),
-            ),
+              TextButton(
+                onPressed: (_selectedFill == null) ? null : _remove,
+                child: const Text('remove'),
+              ),
+            ],
+          ),
+          Wrap(
+            alignment: WrapAlignment.center,
+            children: <Widget>[
+              TextButton(
+                onPressed: (_selectedFill == null)
+                    ? null
+                    : _changeFillOpacity,
+                child: const Text('change fill-opacity'),
+              ),
+              TextButton(
+                onPressed:
+                    (_selectedFill == null) ? null : _changeFillColor,
+                child: const Text('change fill-color'),
+              ),
+              TextButton(
+                onPressed: (_selectedFill == null)
+                    ? null
+                    : _changeFillOutlineColor,
+                child: const Text('change fill-outline-color'),
+              ),
+              TextButton(
+                onPressed: (_selectedFill == null)
+                    ? null
+                    : _changeFillPattern,
+                child: const Text('change fill-pattern'),
+              ),
+              TextButton(
+                onPressed:
+                    (_selectedFill == null) ? null : _changePosition,
+                child: const Text('change position'),
+              ),
+              TextButton(
+                onPressed:
+                    (_selectedFill == null) ? null : _changeDraggable,
+                child: const Text('toggle draggable'),
+              ),
+            ],
           ),
           Expanded(
-            child: SingleChildScrollView(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: <Widget>[
-                  Row(
-                    children: <Widget>[
-                      Column(
-                        children: <Widget>[
-                          TextButton(
-                            onPressed: (_fillCount == 12) ? null : _add,
-                            child: const Text('add'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedFill == null) ? null : _remove,
-                            child: const Text('remove'),
-                          ),
-                        ],
-                      ),
-                      Column(
-                        children: <Widget>[
-                          TextButton(
-                            onPressed: (_selectedFill == null)
-                                ? null
-                                : _changeFillOpacity,
-                            child: const Text('change fill-opacity'),
-                          ),
-                          TextButton(
-                            onPressed:
-                                (_selectedFill == null) ? null : _changeFillColor,
-                            child: const Text('change fill-color'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedFill == null)
-                                ? null
-                                : _changeFillOutlineColor,
-                            child: const Text('change fill-outline-color'),
-                          ),
-                          TextButton(
-                            onPressed: (_selectedFill == null)
-                                ? null
-                                : _changeFillPattern,
-                            child: const Text('change fill-pattern'),
-                          ),
-                          TextButton(
-                            onPressed:
-                                (_selectedFill == null) ? null : _changePosition,
-                            child: const Text('change position'),
-                          ),
-                          TextButton(
-                            onPressed:
-                                (_selectedFill == null) ? null : _changeDraggable,
-                            child: const Text('toggle draggable'),
-                          ),
-                        ],
-                      ),
-                    ],
-                  )
-                ],
+            child: MaplibreMap(
+              onMapCreated: _onMapCreated,
+              onStyleLoadedCallback: _onStyleLoaded,
+              initialCameraPosition: const CameraPosition(
+                target: LatLng(-33.852, 151.211),
+                zoom: 7.0,
               ),
             ),
           ),

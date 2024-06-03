@@ -5,8 +5,8 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart'; // ignore: unnecessary_import
 import 'package:maplibre_gl/maplibre_gl.dart';
-import 'package:maplibre_gl_example/main.dart';
 import 'package:maplibre_gl_example/common/example_scaffold.dart';
+import 'package:maplibre_gl_example/main.dart';
 
 class CustomMarkerPage extends StatefulWidget {
   const CustomMarkerPage({super.key});
@@ -49,11 +49,9 @@ class _CustomMarkerPageState extends State<CustomMarkerPage> {
   }
 
   void _updateMarkerPosition() {
-    final coordinates = <LatLng>[];
-
-    for (final markerState in _markerStates) {
-      coordinates.add(markerState.getCoordinate());
-    }
+    final coordinates = _markerStates
+        .map((markerState) => markerState.getCoordinate())
+        .toList(growable: false);
 
     _mapController.toScreenLocationBatch(coordinates).then((points) {
       _markerStates.asMap().forEach((i, value) {
