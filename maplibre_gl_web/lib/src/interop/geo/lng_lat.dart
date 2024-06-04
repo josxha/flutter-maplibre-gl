@@ -2,7 +2,7 @@
 library maplibre.interop.geo.lng_lat;
 
 import 'dart:js_interop';
-import 'package:maplibre_gl_web/src/interop/geo/lng_lat_bounds_interop.dart';
+import 'lng_lat_bounds.dart';
 
 ///  A `LngLat` object represents a given longitude and latitude coordinate, measured in degrees.
 ///
@@ -20,16 +20,11 @@ import 'package:maplibre_gl_web/src/interop/geo/lng_lat_bounds_interop.dart';
 ///  @see [Display a popup](https://maplibre.org/maplibre-gl-js/docs/examples/popup/)
 ///  @see [Highlight features within a bounding box](https://maplibre.org/maplibre-gl-js/docs/examples/using-box-queryrenderedfeatures/)
 ///  @see [Create a timeline animation](https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/)
-@JS('LngLat')
-class LngLatJsImpl {
-  external num get lng;
+extension type LngLat._(JSObject _) {
+  external num lng;
+  external num lat;
 
-  external num get lat;
-
-  external factory LngLatJsImpl(
-    num lng,
-    num lat,
-  );
+  external LngLat(num lng, num lat);
 
   /// Returns a new `LngLat` object whose longitude is wrapped to the range (-180, 180).
   ///
@@ -38,7 +33,7 @@ class LngLatJsImpl {
   ///  var ll = new maplibregl.LngLat(286.0251, 40.7736);
   ///  var wrapped = ll.wrap();
   ///  wrapped.lng; // = -73.9749
-  external LngLatJsImpl wrap();
+  external LngLat wrap();
 
   ///  Returns the coordinates represented as an array of two numbers.
   ///
@@ -54,8 +49,8 @@ class LngLatJsImpl {
   ///  @example
   ///  var ll = new maplibregl.LngLat(-73.9749, 40.7736);
   ///  ll.toString(); // = "LngLat(-73.9749, 40.7736)"
-  @override
-  external String toString();
+  // @override
+  // external String toString();
 
   ///  Returns a `LngLatBounds` from the coordinates extended by a given `radius`. The returned `LngLatBounds` completely contains the `radius`.
   ///
@@ -64,7 +59,7 @@ class LngLatJsImpl {
   ///  @example
   ///  var ll = new maplibregl.LngLat(-73.9749, 40.7736);
   ///  ll.toBounds(100).toArray(); // = [[-73.97501862141328, 40.77351016847229], [-73.97478137858673, 40.77368983152771]]
-  external LngLatBoundsJsImpl toBounds(num radius);
+  external LngLatBounds toBounds(num radius);
 
   ///  Converts an array of two numbers or an object with `lng` and `lat` or `lon` and `lat` properties
   ///  to a `LngLat` object.
@@ -77,5 +72,5 @@ class LngLatJsImpl {
   ///  var arr = [-73.9749, 40.7736];
   ///  var ll = maplibregl.LngLat.convert(arr);
   ///  ll;   // = LngLat {lng: -73.9749, lat: 40.7736}
-  external static LngLatJsImpl convert(dynamic input);
+  external static LngLat convert(dynamic input);
 }

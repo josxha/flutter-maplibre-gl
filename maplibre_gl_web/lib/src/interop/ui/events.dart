@@ -3,27 +3,22 @@ library maplibre.interop.ui.events;
 
 import 'package:web/web.dart';
 import 'dart:js_interop';
-import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
-import 'package:maplibre_gl_web/src/interop/geo/point_interop.dart';
-import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
 
-@JS()
-@anonymous
-abstract class MapMouseEventJsImpl {
+extension type MapMouseEvent._(JSObject _) {
   /// The event type.
-  external String get type;
+  external String type;
 
   /// The `MapLibreMap` object that fired the event.
-  external MapLibreMapJsImpl get target;
+  external MapLibreMap target;
 
   /// The DOM event which caused the map event.
-  external MouseEvent get originalEvent;
+  external MouseEvent originalEvent;
 
   /// The pixel coordinates of the mouse cursor, relative to the map and measured from the top left corner.
-  external PointJsImpl get point;
+  external Point point;
 
   /// The geographic location on the map of the mouse cursor.
-  external LngLatJsImpl get lngLat;
+  external LngLat lngLat;
 
   ///  Prevents subsequent default processing of the event by the map.
   ///
@@ -36,35 +31,33 @@ abstract class MapMouseEventJsImpl {
   external preventDefault();
 
   /// `true` if `preventDefault` has been called.
-  external bool get defaultPrevented;
+  external bool defaultPrevented;
 }
 
-@JS()
-@anonymous
-abstract class MapTouchEventJsImpl {
+extension type MapTouchEvent(JSObject _) {
   /// The event type.
-  external String get type;
+  external String type;
 
   /// The `MapLibreMap` object that fired the event.
-  external MapLibreMapJsImpl get target;
+  external MapLibreMap target;
 
   /// The DOM event which caused the map event.
-  external TouchEvent get originalEvent;
+  external TouchEvent originalEvent;
 
   /// The geographic location on the map of the center of the touch event points.
-  external LngLatJsImpl get lngLat;
+  external LngLat lngLat;
 
   /// The pixel coordinates of the center of the touch event points, relative to the map and measured from the top left
   /// corner.
-  external PointJsImpl get point;
+  external Point point;
 
   ///  The array of pixel coordinates corresponding to a
   ///  [touch event's `touches`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches) property.
-  external List<PointJsImpl> get points;
+  external List<Point> points;
 
   ///  The geographical locations on the map corresponding to a
   ///  [touch event's `touches`](https://developer.mozilla.org/en-US/docs/Web/API/TouchEvent/touches) property.
-  external List<LngLatJsImpl> get lngLats;
+  external List<LngLat> lngLats;
 
   ///  Prevents subsequent default processing of the event by the map.
   ///
@@ -75,5 +68,5 @@ abstract class MapTouchEventJsImpl {
   external preventDefault();
 
   ///  `true` if `preventDefault` has been called.
-  external bool get defaultPrevented;
+  external bool defaultPrevented;
 }

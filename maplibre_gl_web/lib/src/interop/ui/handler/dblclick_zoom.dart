@@ -2,11 +2,8 @@
 library maplibre.interop.ui.handler.dbclick_zoom;
 
 import 'dart:js_interop';
-import 'package:maplibre_gl_web/src/interop/ui/events_interop.dart';
 
-@JS()
-@anonymous
-abstract class DoubleClickZoomHandlerJsImpl {
+extension type DoubleClickZoomHandler._(JSObject _){
   ///  Returns a Boolean indicating whether the "double click to zoom" interaction is enabled.
   ///
   ///  @returns {boolean} `true` if the "double click to zoom" interaction is enabled.
@@ -29,7 +26,7 @@ abstract class DoubleClickZoomHandlerJsImpl {
   ///  map.doubleClickZoom.disable();
   external disable();
 
-  external onTouchStart(MapTouchEventJsImpl e);
+  external onTouchStart(MapTouchEvent e);
 
-  external onDblClick(MapMouseEventJsImpl e);
+  external onDblClick(MapMouseEvent e);
 }

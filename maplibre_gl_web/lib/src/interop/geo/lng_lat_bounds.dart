@@ -2,7 +2,7 @@
 library maplibre.interop.geo.lng_lat_bounds;
 
 import 'dart:js_interop';
-import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
+import 'lng_lat.dart';
 
 ///  A `LngLatBounds` object represents a geographical bounding box,
 ///  defined by its southwest and northeast points in longitude and latitude.
@@ -19,33 +19,29 @@ import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
 ///  var sw = new maplibregl.LngLat(-73.9876, 40.7661);
 ///  var ne = new maplibregl.LngLat(-73.9397, 40.8002);
 ///  var llb = new maplibregl.LngLatBounds(sw, ne);
-@JS('LngLatBounds')
-class LngLatBoundsJsImpl {
-  external LngLatJsImpl get sw;
-  external LngLatJsImpl get ne;
+extension type LngLatBounds._(JSObject _) {
+  external LngLat sw;
+  external LngLat ne;
 
-  external factory LngLatBoundsJsImpl(
-    LngLatJsImpl sw,
-    LngLatJsImpl ne,
-  );
+  external LngLatBounds(LngLat sw, LngLat ne);
 
   ///  Set the northeast corner of the bounding box
   ///
   ///  @param {LngLatLike} ne
   ///  @returns {LngLatBounds} `this`
-  external LngLatBoundsJsImpl setNorthEast(LngLatJsImpl ne);
+  external LngLatBounds setNorthEast(LngLat ne);
 
   ///  Set the southwest corner of the bounding box
   ///
   ///  @param {LngLatLike} sw
   ///  @returns {LngLatBounds} `this`
-  external LngLatBoundsJsImpl setSouthWest(LngLatJsImpl sw);
+  external LngLatBounds setSouthWest(LngLat sw);
 
   ///  Extend the bounds to include a given LngLat or LngLatBounds.
   ///
   ///  @param {LngLat|LngLatBounds} obj object to extend to
   ///  @returns {LngLatBounds} `this`
-  external LngLatBoundsJsImpl extend(dynamic obj);
+  external LngLatBounds extend(dynamic obj);
 
   ///  Returns the geographical coordinate equidistant from the bounding box's corners.
   ///
@@ -53,27 +49,27 @@ class LngLatBoundsJsImpl {
   ///  @example
   ///  var llb = new maplibregl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
   ///  llb.getCenter(); // = LngLat {lng: -73.96365, lat: 40.78315}
-  external LngLatJsImpl getCenter();
+  external LngLat getCenter();
 
   ///  Returns the southwest corner of the bounding box.
   ///
   ///  @returns {LngLat} The southwest corner of the bounding box.
-  external LngLatJsImpl getSouthWest();
+  external LngLat getSouthWest();
 
   ///  Returns the northeast corner of the bounding box.
   ///
   ///  @returns {LngLat} The northeast corner of the bounding box.
-  external LngLatJsImpl getNorthEast();
+  external LngLat getNorthEast();
 
   ///  Returns the northwest corner of the bounding box.
   ///
   ///  @returns {LngLat} The northwest corner of the bounding box.
-  external LngLatJsImpl getNorthWest();
+  external LngLat getNorthWest();
 
   ///  Returns the southeast corner of the bounding box.
   ///
   ///  @returns {LngLat} The southeast corner of the bounding box.
-  external LngLatJsImpl getSouthEast();
+  external LngLat getSouthEast();
 
   ///  Returns the west edge of the bounding box.
   ///
@@ -111,8 +107,8 @@ class LngLatBoundsJsImpl {
   ///  @example
   ///  var llb = new maplibregl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
   ///  llb.toString(); // = "LngLatBounds(LngLat(-73.9876, 40.7661), LngLat(-73.9397, 40.8002))"
-  @override
-  external String toString();
+  // @override
+  // external String toString();
 
   ///  Check if the bounding box is an empty/`null`-type box.
   ///
@@ -123,7 +119,7 @@ class LngLatBoundsJsImpl {
   ///
   ///  @param {LngLatLike} lnglat geographic point to check against.
   ///  @returns {boolean} True if the point is within the bounding box.
-  external bool contains(LngLatJsImpl lnglat);
+  external bool contains(LngLat lnglat);
 
   ///  Converts an array to a `LngLatBounds` object.
   ///
@@ -133,5 +129,5 @@ class LngLatBoundsJsImpl {
   ///
   ///  @param {LngLatBoundsLike} input An array of two coordinates to convert, or a `LngLatBounds` object to return.
   ///  @returns {LngLatBounds} A new `LngLatBounds` object, if a conversion occurred, or the original `LngLatBounds` object.
-  external static LngLatBoundsJsImpl convert(dynamic input);
+  external static LngLatBounds convert(dynamic input);
 }

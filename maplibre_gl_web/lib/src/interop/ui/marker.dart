@@ -27,20 +27,20 @@ import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';
 /// @see [Add custom icons with Markers](https://maplibre.org/maplibre-gl-js/docs/examples/custom-marker-icons/)
 /// @see [Create a draggable Marker](https://maplibre.org/maplibre-gl-js/docs/examples/drag-a-marker/)
 @JS('Marker')
-class MarkerJsImpl extends EventedJsImpl {
-  external factory MarkerJsImpl([MarkerOptionsJsImpl? options]);
+class Marker extends Evented {
+  external factory Marker([MarkerOptions? options]);
 
   ///  Attaches the marker to a map
   ///  @param {MapLibreMap} map
   ///  @returns {Marker} `this`
-  external MarkerJsImpl addTo(MapLibreMapJsImpl map);
+  external Marker addTo(MapLibreMap map);
 
   ///  Removes the marker from a map
   ///  @example
   ///  var marker = new maplibregl.Marker().addTo(map);
   ///  marker.remove();
   ///  @returns {Marker} `this`
-  external MarkerJsImpl remove();
+  external Marker remove();
 
   ///  Get the marker's geographical location.
   ///
@@ -49,11 +49,11 @@ class MarkerJsImpl extends EventedJsImpl {
   ///  the marker on screen.
   ///
   ///  @returns {LngLat}
-  external LngLatJsImpl getLngLat();
+  external LngLat getLngLat();
 
   ///  Set the marker's geographical position and move it.
   ///  @returns {Marker} `this`
-  external MarkerJsImpl setLngLat(LngLatJsImpl lnglat);
+  external Marker setLngLat(LngLat lnglat);
 
   ///  Returns the `Marker`'s HTML element.
   ///  @returns {HtmlElement} element
@@ -63,29 +63,29 @@ class MarkerJsImpl extends EventedJsImpl {
   ///  @param popup an instance of the `Popup` class. If undefined or null, any popup
   ///  set on this `Marker` instance is unset
   ///  @returns {Marker} `this`
-  external MarkerJsImpl setPopup(PopupJsImpl popup);
+  external Marker setPopup(Popup popup);
 
   ///  Returns the Popup instance that is bound to the Marker
   ///  @returns {Popup} popup
-  external PopupJsImpl getPopup();
+  external Popup getPopup();
 
   ///  Opens or closes the bound popup, depending on the current state
   ///  @returns {Marker} `this`
-  external MarkerJsImpl togglePopup();
+  external Marker togglePopup();
 
   ///  Get the marker's offset.
   ///  @returns {Point}
-  external PointJsImpl getOffset();
+  external Point getOffset();
 
   ///  Sets the offset of the marker
   ///  @param {PointLike} offset The offset in pixels as a {@link PointLike} object to apply relative to the element's center. Negatives indicate left and up.
   ///  @returns {Marker} `this`
-  external MarkerJsImpl setOffset(PointJsImpl offset);
+  external Marker setOffset(Point offset);
 
   ///  Sets the `draggable` property and functionality of the marker
   ///  @param {boolean} [shouldBeDraggable=false] Turns drag functionality on/off
   ///  @returns {Marker} `this`
-  external MarkerJsImpl setDraggable(bool shouldBeDraggable);
+  external Marker setDraggable(bool shouldBeDraggable);
 
   ///  Returns true if the marker can be dragged
   ///  @returns {boolean}
@@ -94,7 +94,7 @@ class MarkerJsImpl extends EventedJsImpl {
   ///  Sets the `rotation` property of the marker.
   ///  @param {number} [rotation=0] The rotation angle of the marker (clockwise, in degrees), relative to its respective {@link Marker#rotationAlignment} setting.
   ///  @returns {Marker} `this`
-  external MarkerJsImpl setRotation(num rotation);
+  external Marker setRotation(num rotation);
 
   ///  Returns the current rotation angle of the marker (in degrees).
   ///  @returns {number}
@@ -103,7 +103,7 @@ class MarkerJsImpl extends EventedJsImpl {
   ///  Sets the `rotationAlignment` property of the marker.
   ///  @param {string} [alignment='auto'] Sets the `rotationAlignment` property of the marker.
   ///  @returns {Marker} `this`
-  external MarkerJsImpl setRotationAlignment(String alignment);
+  external Marker setRotationAlignment(String alignment);
 
   ///  Returns the current `rotationAlignment` property of the marker.
   ///  @returns {string}
@@ -112,7 +112,7 @@ class MarkerJsImpl extends EventedJsImpl {
   ///  Sets the `pitchAlignment` property of the marker.
   ///  @param {string} [alignment] Sets the `pitchAlignment` property of the marker. If alignment is 'auto', it will automatically match `rotationAlignment`.
   ///  @returns {Marker} `this`
-  external MarkerJsImpl setPitchAlignment(String alignment);
+  external Marker setPitchAlignment(String alignment);
 
   ///  Returns the current `pitchAlignment` property of the marker.
   ///  @returns {string}
@@ -121,10 +121,10 @@ class MarkerJsImpl extends EventedJsImpl {
 
 @JS()
 @anonymous
-class MarkerOptionsJsImpl {
-  external factory MarkerOptionsJsImpl({
+class MarkerOptions {
+  external factory MarkerOptions({
     HTMLElement? element,
-    PointJsImpl? offset,
+    Point? offset,
     String? anchor,
     String? color,
     bool? draggable,

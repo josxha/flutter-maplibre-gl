@@ -1,8 +1,8 @@
 library maplibre.interop.style.layers.line_layer;
 
-import 'package:maplibre_gl_web/src/style/layers/line_layer.dart';
+import 'dart:js_interop';
 
-class LineLayerJsImpl {
+extension type LineLayer._(JSObject _) {
   static toJs(LineLayer lineLayer) => toDict(lineLayer).jsify();
 
   static toDict(LineLayer lineLayer) {
@@ -30,7 +30,7 @@ class LineLayerJsImpl {
   }
 }
 
-class LinePaintJsImpl {
+extension type LinePaint._(JSObject _) {
   static toJs(LinePaint linePaint) => toDict(linePaint).jsify();
 
   static toDict(LinePaint linePaint) {
@@ -72,7 +72,7 @@ class LinePaintJsImpl {
   }
 }
 
-class LineLayoutJsImpl {
+extension type LineLayout._(JSObject _) {
   static toJs(LineLayout lineLayout) => toDict(lineLayout).jsify();
 
   static toDict(LineLayout lineLayout) {

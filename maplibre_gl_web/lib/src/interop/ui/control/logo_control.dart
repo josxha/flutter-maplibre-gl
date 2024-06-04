@@ -2,17 +2,15 @@
 library maplibre.interop.ui.control.logo_control;
 
 import 'dart:js_interop';
-import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
 
 /// A LogoControl is a control that adds the watermark.
 ///
 /// @implements {IControl}
 /// @private
-@JS('LogoControl')
-class LogoControlJsImpl {
-  external factory LogoControlJsImpl();
+extension type LogoControl._(JSObject _) {
+  external LogoControl();
 
-  external onAdd(MapLibreMapJsImpl map);
+  external onAdd(MapLibreMap map);
 
   external onRemove();
 

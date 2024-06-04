@@ -3,9 +3,6 @@ library maplibre.interop.ui.popup;
 
 import 'package:web/web.dart';
 import 'dart:js_interop';
-import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
-import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
-import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';
 
 /// A popup component.
 ///
@@ -53,16 +50,16 @@ import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';
 /// @see [Display a popup on click](https://maplibre.org/maplibre-gl-js/docs/examples/popup-on-click/)
 /// @see [Attach a popup to a marker instance](https://maplibre.org/maplibre-gl-js/docs/examples/set-popup/)
 @JS('Popup')
-class PopupJsImpl extends EventedJsImpl {
+class Popup extends Evented {
   external dynamic get options;
 
-  external factory PopupJsImpl([PopupOptionsJsImpl? options]);
+  external factory Popup([PopupOptions? options]);
 
   /// Adds the popup to a map.
   ///
   /// @param {MapLibreMap} map The MapLibre JS JS map to add the popup to.
   /// @returns {Popup} `this`
-  external PopupJsImpl addTo(MapLibreMapJsImpl map);
+  external Popup addTo(MapLibreMap map);
 
   /// @returns {boolean} `true` if the popup is open, `false` if it is closed.
   external bool isOpen();
@@ -73,7 +70,7 @@ class PopupJsImpl extends EventedJsImpl {
   /// var popup = new maplibregl.Popup().addTo(map);
   /// popup.remove();
   /// @returns {Popup} `this`
-  external PopupJsImpl remove();
+  external Popup remove();
 
   /// Returns the geographical location of the popup's anchor.
   ///
@@ -82,19 +79,19 @@ class PopupJsImpl extends EventedJsImpl {
   /// the popup on screen.
   ///
   /// @returns {LngLat} The geographical location of the popup's anchor.
-  external LngLatJsImpl getLngLat();
+  external LngLat getLngLat();
 
   /// Sets the geographical location of the popup's anchor, and moves the popup to it. Replaces trackPointer() behavior.
   ///
   /// @param lnglat The geographical location to set as the popup's anchor.
   /// @returns {Popup} `this`
-  external PopupJsImpl setLngLat(LngLatJsImpl lnglat);
+  external Popup setLngLat(LngLat lnglat);
 
   /// Tracks the popup anchor to the cursor position, on screens with a pointer device (will be hidden on touchscreens). Replaces the setLngLat behavior.
   /// For most use cases, `closeOnClick` and `closeButton` should also be set to `false` here.
   /// @returns {Popup} `this`
   ////
-  external PopupJsImpl trackPointer();
+  external Popup trackPointer();
 
   /// Returns the `Popup`'s HTML element.
   /// @returns {HtmlElement} element
@@ -113,7 +110,7 @@ class PopupJsImpl extends EventedJsImpl {
   ///   .setLngLat(e.lngLat)
   ///   .setText('Hello, world!')
   ///   .addTo(map);
-  external PopupJsImpl setText(String text);
+  external Popup setText(String text);
 
   /// Sets the popup's content to the HTML provided as a string.
   ///
@@ -123,7 +120,7 @@ class PopupJsImpl extends EventedJsImpl {
   ///
   /// @param html A string representing HTML content for the popup.
   /// @returns {Popup} `this`
-  external PopupJsImpl setHTML(String? html);
+  external Popup setHTML(String? html);
 
   /// Returns the popup's maximum width.
   ///
@@ -136,7 +133,7 @@ class PopupJsImpl extends EventedJsImpl {
   ///
   /// @param maxWidth A string representing the value for the maximum width.
   /// @returns {Popup} `this`
-  external PopupJsImpl setMaxWidth(String maxWidth);
+  external Popup setMaxWidth(String maxWidth);
 
   /// Sets the popup's content to the element provided as a DOM node.
   ///
@@ -150,7 +147,7 @@ class PopupJsImpl extends EventedJsImpl {
   ///   .setLngLat(e.lngLat)
   ///   .setDOMContent(div)
   ///   .addTo(map);
-  external PopupJsImpl setDOMContent(Node htmlNode);
+  external Popup setDOMContent(Node htmlNode);
 
   /// Adds a CSS class to the popup container element.
   ///
@@ -184,8 +181,8 @@ class PopupJsImpl extends EventedJsImpl {
 
 @JS()
 @anonymous
-class PopupOptionsJsImpl {
-  external factory PopupOptionsJsImpl({
+class PopupOptions {
+  external factory PopupOptions({
     bool? loseButton,
     bool? closeButton,
     bool? closeOnClick,

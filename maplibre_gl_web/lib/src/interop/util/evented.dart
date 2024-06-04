@@ -7,30 +7,28 @@ import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
 import 'package:maplibre_gl_web/src/interop/geo/point_interop.dart';
 import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
 
-typedef ListenerJsImpl = dynamic Function(EventJsImpl object);
+typedef Listener = dynamic Function(Event object);
 
-@JS()
-@anonymous
-abstract class EventJsImpl {
+abstract class Event {
   external String get id;
   external String get type;
-  external LngLatJsImpl get lngLat;
-  external List<FeatureJsImpl> get features;
-  external PointJsImpl get point;
+  external LngLat get lngLat;
+  external List<Feature> get features;
+  external Point get point;
 
-  external factory EventJsImpl({
+  external factory Event({
     String? id,
     String? type,
-    LngLatJsImpl? lngLat,
-    List<FeatureJsImpl?>? features,
-    PointJsImpl? point,
+    LngLat? lngLat,
+    List<Feature?>? features,
+    Point? point,
   });
 
   external preventDefault();
 }
 
 @JS('Evented')
-abstract class EventedJsImpl {
+abstract class Evented {
   ///  Adds a listener to a specified event type.
   ///
   ///  @param {string} type The event type to add a listen for.
@@ -39,8 +37,8 @@ abstract class EventedJsImpl {
   ///    extended with `target` and `type` properties.
   ///  @returns {Object} `this`
   //external on(String type, Listener listener);
-  external MapLibreMapJsImpl on(String type,
-      [dynamic layerIdOrListener, ListenerJsImpl? listener]);
+  external MapLibreMap on(String type,
+      [dynamic layerIdOrListener, Listener? listener]);
 
   ///  Removes a previously registered event listener.
   ///
@@ -48,8 +46,8 @@ abstract class EventedJsImpl {
   ///  @param {Function} listener The listener function to remove.
   ///  @returns {Object} `this`
   //external off(String type, Listener listener);
-  external MapLibreMapJsImpl off(String type,
-      [dynamic layerIdOrListener, ListenerJsImpl? listener]);
+  external MapLibreMap off(String type,
+      [dynamic layerIdOrListener, Listener? listener]);
 
   ///  Adds a listener that will be called only once to a specified event type.
   ///
@@ -58,9 +56,9 @@ abstract class EventedJsImpl {
   ///  @param {string} type The event type to listen for.
   ///  @param {Function} listener The function to be called when the event is fired the first time.
   ///  @returns {Object} `this`
-  external MapLibreMapJsImpl once(String type, ListenerJsImpl listener);
+  external MapLibreMap once(String type, Listener listener);
 
-  external fire(EventJsImpl event, [dynamic properties]);
+  external fire(Event event, [dynamic properties]);
 
   ///  Returns a true if this instance of Evented or any forwardeed instances of Evented have a listener for the specified type.
   ///
@@ -74,5 +72,5 @@ abstract class EventedJsImpl {
   ///  @private
   ///  @returns {Object} `this`
   ///  @private
-  external setEventedParent([EventedJsImpl? parent, dynamic data]);
+  external setEventedParent([Evented? parent, dynamic data]);
 }
