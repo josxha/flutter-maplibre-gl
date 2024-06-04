@@ -50,10 +50,7 @@ class MapUiBodyState extends State<MapUiBody> {
 
   // Style string can a reference to a local or remote resources.
   // On Android the raw JSON can also be passed via a styleString, on iOS this is not supported.
-  final List<String> _styleStrings = [
-    "https://demotiles.maplibre.org/style.json",
-    "assets/style.json"
-  ];
+  final List<String> _styleStrings = [MaplibreStyles.demo, "assets/style.json"];
   final List<String> _styleStringLabels = [
     "Maplibre demo style",
     "Local style file"
@@ -66,7 +63,7 @@ class MapUiBodyState extends State<MapUiBody> {
   bool _myLocationEnabled = true;
   bool _telemetryEnabled = true;
   bool _countriesVisible = true;
-  MyLocationTrackingMode _myLocationTrackingMode = MyLocationTrackingMode.None;
+  MyLocationTrackingMode _myLocationTrackingMode = MyLocationTrackingMode.none;
   List<Object>? _featureQueryFilter;
   Fill? _selectedFill;
 
@@ -361,7 +358,7 @@ class MapUiBodyState extends State<MapUiBody> {
       doubleClickZoomEnabled: _doubleClickToZoomEnabled,
       myLocationEnabled: _myLocationEnabled,
       myLocationTrackingMode: _myLocationTrackingMode,
-      myLocationRenderMode: MyLocationRenderMode.GPS,
+      myLocationRenderMode: MyLocationRenderMode.gps,
       onMapClick: (point, latLng) async {
         debugPrint(
             "Map click: ${point.x},${point.y}   ${latLng.latitude}/${latLng.longitude}");
@@ -373,8 +370,10 @@ class MapUiBodyState extends State<MapUiBody> {
         debugPrint('# features: ${features.length}');
         _clearFill();
         if (features.isEmpty && _featureQueryFilter != null) {
-          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-              content: Text('QueryRenderedFeatures: No features found!')));
+          if (context.mounted) {
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                content: Text('QueryRenderedFeatures: No features found!')));
+          }
         } else if (features.isNotEmpty) {
           _drawFill(features);
         }
@@ -400,7 +399,7 @@ class MapUiBodyState extends State<MapUiBody> {
       },
       onCameraTrackingDismissed: () {
         setState(() {
-          _myLocationTrackingMode = MyLocationTrackingMode.None;
+          _myLocationTrackingMode = MyLocationTrackingMode.none;
         });
       },
       onUserLocationUpdated: (location) {

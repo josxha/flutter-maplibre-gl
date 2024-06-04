@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:maplibre_gl/maplibre_gl.dart';
 
 import 'page.dart';
-import 'package:maplibre_gl_platform_interface/maplibre_gl_platform_interface.dart';
 
 class StyleInfo {
   final String name;
@@ -104,7 +103,7 @@ class FullMapState extends State<FullMap> {
     await controller.addSource(
         "terrain",
         const VectorSourceProperties(
-          url: "https://demotiles.maplibre.org/tiles/tiles.json",
+          url: MaplibreStyles.demo,
         ));
 
     await controller.addLayer(
@@ -254,7 +253,7 @@ class FullMapState extends State<FullMap> {
   final _stylesAndLoaders = [
     const StyleInfo(
       name: "Vector",
-      baseStyle: MaplibreStyles.DEMO,
+      baseStyle: MaplibreStyles.demo,
       addDetails: addVector,
       position: CameraPosition(target: LatLng(33.3832, -118.4333), zoom: 6),
     ),
@@ -270,7 +269,7 @@ class FullMapState extends State<FullMap> {
     ),
     const StyleInfo(
       name: "Geojson cluster",
-      baseStyle: MaplibreStyles.DEMO,
+      baseStyle: MaplibreStyles.demo,
       addDetails: addGeojsonCluster,
       position: CameraPosition(target: LatLng(33.5, -118.1), zoom: 5),
     ),
@@ -348,8 +347,8 @@ class FullMapState extends State<FullMap> {
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(
-                    "Current source ${styleInfo.name}",
-                    textScaleFactor: 1.4,
+                    "Current source: ${styleInfo.name}",
+                    style: Theme.of(context).textTheme.titleLarge,
                   ),
                 ),
               ),
