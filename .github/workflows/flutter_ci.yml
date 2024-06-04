@@ -63,7 +63,7 @@ jobs:
         uses: actions/upload-artifact@v4
         if: ${{ matrix.sdk == '' }}
         with:
-          name: maplibre-flutter-demo-android
+          name: maplibre-flutter-demo.apk
           path: example/build/app/outputs/flutter-apk/app-release.apk
 
   build-iOS:
@@ -92,7 +92,7 @@ jobs:
         if: ${{ matrix.sdk == '' }}
         uses: actions/upload-artifact@v4
         with:
-          name: maplibre-flutter-demo-ios
+          name: maplibre-flutter-demo.app
           path: example/build/ios/iphonesimulator
 
   build-web:
