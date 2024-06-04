@@ -1,8 +1,4 @@
-part of maplibre_gl_web;
-
-//TODO Url taken from the Maptiler tutorial; use official and stable release once available
-final _maplibreGlCssUrl =
-    'https://cdn.maptiler.com/maplibre-gl-js/v1.13.0-rc.4/mapbox-gl.css';
+part of '../maplibre_gl_web.dart';
 
 class MaplibreMapController extends MapLibreGlPlatform
     implements MapLibreMapOptionsSink {
