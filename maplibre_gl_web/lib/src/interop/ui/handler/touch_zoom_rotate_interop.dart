@@ -7,7 +7,7 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-abstract class TouchZoomRotateHandlerJsImpl {
+extension type TouchZoomRotateHandlerJsImpl._(JSObject _) {
   ///  Returns a Boolean indicating whether the "pinch to rotate and zoom" interaction is enabled.
   ///
   ///  @returns {boolean} `true` if the "pinch to rotate and zoom" interaction is enabled.

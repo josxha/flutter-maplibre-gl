@@ -46,8 +46,8 @@ import 'package:maplibre_gl_web/src/interop/ui/handler/touch_zoom_rotate_interop
 ///  ```
 ///  @see [Display a map](https://maplibre.org/maplibre-gl-js/docs/examples/simple-map/)
 @JS('Map')
-class MapLibreMapJsImpl extends CameraJsImpl {
-  external factory MapLibreMapJsImpl(MapOptionsJsImpl options);
+extension type MapLibreMapJsImpl._(CameraJsImpl _) {
+  external MapLibreMapJsImpl(MapOptionsJsImpl options);
 
   external StyleJsImpl get style;
   external dynamic get painter;
@@ -1112,7 +1112,7 @@ class MapOptionsJsImpl {
   /// A patch to apply to the default localization table for UI strings, e.g. control tooltips. The `locale` object maps namespaced UI string IDs to translated strings in the target language; see `src/ui/default_locale.js` for an example with all supported string IDs. The object may specify all UI strings (thereby adding support for a new translation) or only a subset of strings (thereby patching the default translation table).
   external dynamic get locale;
 
-  external factory MapOptionsJsImpl({
+  external MapOptionsJsImpl({
     dynamic hash,
     bool? interactive,
     dynamic container,
@@ -1163,14 +1163,14 @@ typedef RequestTransformFunctionJsImpl = RequestParametersJsImpl Function(
 
 @JS()
 @anonymous
-class RequestParametersJsImpl {
-  String? url;
-  String? credentials;
-  dynamic headers;
-  String? method;
-  bool? collectResourceTiming;
+extension type RequestParametersJsImpl._(JSObject _) {
+  external String? url;
+  external String? credentials;
+  external dynamic headers;
+  external String? method;
+  external bool? collectResourceTiming;
 
-  external factory RequestParametersJsImpl({
+  external RequestParametersJsImpl({
     String? url,
     String? credentials,
     dynamic headers,

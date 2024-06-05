@@ -7,7 +7,7 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-abstract class DragPanHandlerJsImpl {
+extension type DragPanHandlerJsImpl._(JSObject _) {
   ///  Returns a Boolean indicating whether the "drag to pan" interaction is enabled.
   ///
   ///  @returns {boolean} `true` if the "drag to pan" interaction is enabled.

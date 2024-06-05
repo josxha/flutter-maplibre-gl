@@ -2,16 +2,17 @@
 library maplibre.interop.ui.control.navigation_control;
 
 import 'dart:js_interop';
+
 import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
 
 @JS()
 @anonymous
-class AttributionControlOptionsJsImpl {
+extension type AttributionControlOptionsJsImpl._(JSObject _) {
   external bool get compact;
 
   external List<String>? get customAttribution;
 
-  external factory AttributionControlOptionsJsImpl(
+  external AttributionControlOptionsJsImpl(
       {bool? compact, List<String>? customAttribution});
 }
 
@@ -26,11 +27,10 @@ class AttributionControlOptionsJsImpl {
 /// map.addControl(attribution, 'top-left');
 /// @see [Display map attribution controls](https://maplibre.org/maplibre-gl-js/docs/examples/attribution-position/)
 @JS('AttributionControl')
-class AttributionControlJsImpl {
+extension type AttributionControlJsImpl._(JSObject _) {
   external AttributionControlOptionsJsImpl get options;
 
-  external factory AttributionControlJsImpl(
-      AttributionControlOptionsJsImpl options);
+  external AttributionControlJsImpl(AttributionControlOptionsJsImpl options);
 
   external onAdd(MapLibreMapJsImpl map);
 

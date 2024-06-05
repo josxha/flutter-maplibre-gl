@@ -2,12 +2,13 @@
 library maplibre.interop.ui.control.geolocate_control;
 
 import 'dart:js_interop';
+
 import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
 import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';
 
 @JS()
 @anonymous
-class GeolocateControlOptionsJsImpl {
+extension type GeolocateControlOptionsJsImpl._(JSObject _) {
   external PositionOptionsJsImpl get positionOptions;
 
   external dynamic get fitBoundsOptions;
@@ -18,7 +19,7 @@ class GeolocateControlOptionsJsImpl {
 
   external bool get showUserLocation;
 
-  external factory GeolocateControlOptionsJsImpl({
+  external GeolocateControlOptionsJsImpl({
     PositionOptionsJsImpl? positionOptions,
     dynamic fitBoundsOptions,
     bool? trackUserLocation,
@@ -29,14 +30,14 @@ class GeolocateControlOptionsJsImpl {
 
 @JS()
 @anonymous
-class PositionOptionsJsImpl {
+extension type PositionOptionsJsImpl._(JSObject _) {
   external bool get enableHighAccuracy;
 
   external num get maximumAge;
 
   external num get timeout;
 
-  external factory PositionOptionsJsImpl({
+  external PositionOptionsJsImpl({
     bool? enableHighAccuracy,
     num? maximumAge,
     num? timeout,
@@ -44,11 +45,10 @@ class PositionOptionsJsImpl {
 }
 
 @JS('GeolocateControl')
-abstract class GeolocateControlJsImpl extends EventedJsImpl {
+extension type GeolocateControlJsImpl._(EventedJsImpl _) {
   external GeolocateControlOptionsJsImpl get options;
 
-  external factory GeolocateControlJsImpl(
-      GeolocateControlOptionsJsImpl options);
+  external GeolocateControlJsImpl(GeolocateControlOptionsJsImpl options);
 
   external onAdd(MapLibreMapJsImpl map);
 

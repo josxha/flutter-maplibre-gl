@@ -2,6 +2,7 @@
 library maplibre.interop.geo.lng_lat_bounds;
 
 import 'dart:js_interop';
+
 import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
 
 ///  A `LngLatBounds` object represents a geographical bounding box,
@@ -20,14 +21,12 @@ import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
 ///  var ne = new maplibregl.LngLat(-73.9397, 40.8002);
 ///  var llb = new maplibregl.LngLatBounds(sw, ne);
 @JS('LngLatBounds')
-class LngLatBoundsJsImpl {
+extension type LngLatBoundsJsImpl._(JSObject _) {
   external LngLatJsImpl get sw;
+
   external LngLatJsImpl get ne;
 
-  external factory LngLatBoundsJsImpl(
-    LngLatJsImpl sw,
-    LngLatJsImpl ne,
-  );
+  external LngLatBoundsJsImpl(LngLatJsImpl sw, LngLatJsImpl ne);
 
   ///  Set the northeast corner of the bounding box
   ///
@@ -111,8 +110,8 @@ class LngLatBoundsJsImpl {
   ///  @example
   ///  var llb = new maplibregl.LngLatBounds([-73.9876, 40.7661], [-73.9397, 40.8002]);
   ///  llb.toString(); // = "LngLatBounds(LngLat(-73.9876, 40.7661), LngLat(-73.9397, 40.8002))"
-  @override
-  external String toString();
+  // @override
+  // external String toString();
 
   ///  Check if the bounding box is an empty/`null`-type box.
   ///

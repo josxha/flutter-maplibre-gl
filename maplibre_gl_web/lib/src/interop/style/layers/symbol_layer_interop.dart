@@ -1,8 +1,10 @@
 library maplibre.interop.style.layers.symbol_layer;
 
+import 'dart:js_interop';
+
 import 'package:maplibre_gl_web/src/style/layers/symbol_layer.dart';
 
-class SymbolLayerJsImpl {
+extension type SymbolLayerJsImpl._(JSObject _) {
   static toJs(SymbolLayer symbolLayer) => toDict(symbolLayer).jsify();
 
   static toDict(SymbolLayer symbolLayer) {
@@ -40,7 +42,7 @@ class SymbolLayerJsImpl {
   }
 }
 
-class SymbolPaintJsImpl {
+extension type SymbolPaintJsImpl._(JSObject _) {
   static toJs(SymbolPaint symbolPaint) => toDict(symbolPaint).jsify();
 
   static toDict(SymbolPaint symbolPaint) {
@@ -91,7 +93,7 @@ class SymbolPaintJsImpl {
   }
 }
 
-class SymbolLayoutJsImpl {
+extension type SymbolLayoutJsImpl._(JSObject _) {
   static toJs(SymbolLayout symbolLayout) => toDict(symbolLayout).jsify();
 
   static toDict(SymbolLayout symbolLayout) {

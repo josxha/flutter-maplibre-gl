@@ -5,7 +5,7 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-abstract class KeyboardHandlerJsImpl {
+extension type KeyboardHandlerJsImpl._(JSObject _) {
   ///  Returns a Boolean indicating whether keyboard interaction is enabled.
   ///
   ///  @returns {boolean} `true` if keyboard interaction is enabled.

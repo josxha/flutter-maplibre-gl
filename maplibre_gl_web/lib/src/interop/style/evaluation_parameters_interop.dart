@@ -4,14 +4,14 @@ library maplibre.interop.style.evaluation_parameters;
 import 'dart:js_interop';
 
 @JS('EvaluationParameters')
-class EvaluationParametersJsImpl {
+extension type EvaluationParametersJsImpl._(JSObject _) {
   external num get zoom;
   external num get now;
   external num get fadeDuration;
   external dynamic get zoomHistory;
   external dynamic get transition;
 
-  external factory EvaluationParametersJsImpl(num zoom, [dynamic options]);
+  external EvaluationParametersJsImpl(num zoom, [dynamic options]);
 
   external bool isSupportedScript(String str);
 

@@ -2,16 +2,17 @@
 library maplibre.style.interop.sources.geojson_source;
 
 import 'dart:js_interop';
+
 import 'package:maplibre_gl_web/src/interop/geo/geojson_interop.dart';
 
 @JS()
 @anonymous
-class GeoJsonSourceJsImpl {
+extension type GeoJsonSourceJsImpl._(JSObject _) {
   external FeatureCollectionJsImpl get data;
 
   external String get promoteId;
 
-  external factory GeoJsonSourceJsImpl({
+  external GeoJsonSourceJsImpl({
     String? type,
     String? promoteId,
     FeatureCollectionJsImpl data,

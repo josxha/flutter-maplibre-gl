@@ -7,7 +7,7 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-abstract class ScrollZoomHandlerJsImpl {
+extension type ScrollZoomHandlerJsImpl._(JSObject _) {
   ///  Set the zoom rate of a trackpad
   ///  @param {number} [zoomRate = 1/100]
   external setZoomRate(num zoomRate);

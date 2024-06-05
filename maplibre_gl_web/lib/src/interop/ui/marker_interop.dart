@@ -1,13 +1,14 @@
 @JS('maplibregl')
 library maplibre.interop.ui.marker;
 
-import 'package:web/web.dart';
 import 'dart:js_interop';
+
 import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
 import 'package:maplibre_gl_web/src/interop/geo/point_interop.dart';
 import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
 import 'package:maplibre_gl_web/src/interop/ui/popup_interop.dart';
 import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';
+import 'package:web/web.dart';
 
 /// Creates a marker component
 /// @param {HTMLElement} [element] DOM element to use as a marker. The default is a light blue, droplet-shaped SVG marker.
@@ -27,8 +28,8 @@ import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';
 /// @see [Add custom icons with Markers](https://maplibre.org/maplibre-gl-js/docs/examples/custom-marker-icons/)
 /// @see [Create a draggable Marker](https://maplibre.org/maplibre-gl-js/docs/examples/drag-a-marker/)
 @JS('Marker')
-class MarkerJsImpl extends EventedJsImpl {
-  external factory MarkerJsImpl([MarkerOptionsJsImpl? options]);
+extension type MarkerJsImpl._(EventedJsImpl _) {
+  external MarkerJsImpl([MarkerOptionsJsImpl? options]);
 
   ///  Attaches the marker to a map
   ///  @param {MapLibreMap} map
@@ -121,8 +122,8 @@ class MarkerJsImpl extends EventedJsImpl {
 
 @JS()
 @anonymous
-class MarkerOptionsJsImpl {
-  external factory MarkerOptionsJsImpl({
+extension type MarkerOptionsJsImpl._(JSObject _) {
+  external MarkerOptionsJsImpl({
     HTMLElement? element,
     PointJsImpl? offset,
     String? anchor,

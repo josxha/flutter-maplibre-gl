@@ -9,8 +9,8 @@ import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
 /// @implements {IControl}
 /// @private
 @JS('LogoControl')
-class LogoControlJsImpl {
-  external factory LogoControlJsImpl();
+extension type LogoControlJsImpl._(JSObject _) {
+  external LogoControlJsImpl();
 
   external onAdd(MapLibreMapJsImpl map);
 

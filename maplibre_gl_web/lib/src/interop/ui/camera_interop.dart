@@ -22,7 +22,7 @@ import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';
 ///  @property {LngLatLike} around If `zoom` is specified, `around` determines the point around which the zoom is centered.
 @JS()
 @anonymous
-class CameraOptionsJsImpl {
+extension type CameraOptionsJsImpl._(JSObject _) {
   external LngLatJsImpl get center;
 
   external num get zoom;
@@ -33,7 +33,7 @@ class CameraOptionsJsImpl {
 
   external LngLatJsImpl get around;
 
-  external factory CameraOptionsJsImpl({
+  external CameraOptionsJsImpl({
     LngLatJsImpl? center,
     num? zoom,
     num? bearing,
@@ -56,7 +56,7 @@ class CameraOptionsJsImpl {
 ///    [`prefers-reduced-motion`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
 @JS()
 @anonymous
-class AnimationOptionsJsImpl {
+extension type AnimationOptionsJsImpl._(JSObject _) {
   external num get duration;
 
   external num Function(num time) get easing;
@@ -67,7 +67,7 @@ class AnimationOptionsJsImpl {
 
   external bool get essential;
 
-  external factory AnimationOptionsJsImpl({
+  external AnimationOptionsJsImpl({
     num? duration,
     num Function(num time)? easing,
     PointJsImpl? offset,
@@ -86,7 +86,7 @@ class AnimationOptionsJsImpl {
 ///  @property {number} right Padding in pixels from the right of the map canvas.
 @JS()
 @anonymous
-class PaddingOptionsJsImpl {
+extension type PaddingOptionsJsImpl._(JSObject _) {
   external num get top;
 
   external num get bottom;
@@ -95,7 +95,7 @@ class PaddingOptionsJsImpl {
 
   external num get right;
 
-  external factory PaddingOptionsJsImpl({
+  external PaddingOptionsJsImpl({
     num? top,
     num? bottom,
     num? left,
@@ -104,7 +104,7 @@ class PaddingOptionsJsImpl {
 }
 
 @JS('Camera')
-abstract class CameraJsImpl extends EventedJsImpl {
+extension type CameraJsImpl._(EventedJsImpl _) {
   ///  Returns the map's geographical centerpoint.
   ///
   ///  @memberof MapLibreMap#

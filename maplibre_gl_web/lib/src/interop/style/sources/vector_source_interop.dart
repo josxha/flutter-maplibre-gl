@@ -5,12 +5,10 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-class VectorSourceJsImpl {
+extension type VectorSourceJsImpl._(JSObject _) {
   external String get url;
+
   external List<String> get tiles;
-  external factory VectorSourceJsImpl({
-    String? type,
-    String? url,
-    List<String>? tiles,
-  });
+
+  external VectorSourceJsImpl({String? type, String? url, List<String>? tiles});
 }

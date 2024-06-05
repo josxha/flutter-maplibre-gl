@@ -5,10 +5,12 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-class FeatureCollectionJsImpl {
+extension type FeatureCollectionJsImpl._(JSObject _) {
   external String get type;
+
   external List<FeatureJsImpl> get features;
-  external factory FeatureCollectionJsImpl({
+
+  external FeatureCollectionJsImpl({
     String type,
     List<FeatureJsImpl> features,
   });
@@ -16,14 +18,20 @@ class FeatureCollectionJsImpl {
 
 @JS()
 @anonymous
-class FeatureJsImpl {
+extension type FeatureJsImpl._(JSObject _) {
   external dynamic get id;
+
   external set id(dynamic id);
+
   external String get type;
+
   external GeometryJsImpl get geometry;
+
   external dynamic get properties;
+
   external String get source;
-  external factory FeatureJsImpl({
+
+  external FeatureJsImpl({
     dynamic id,
     String? type,
     GeometryJsImpl geometry,
@@ -34,11 +42,10 @@ class FeatureJsImpl {
 
 @JS()
 @anonymous
-class GeometryJsImpl {
+extension type GeometryJsImpl._(JSObject _) {
   external String get type;
+
   external dynamic get coordinates;
-  external factory GeometryJsImpl({
-    String? type,
-    dynamic coordinates,
-  });
+
+  external GeometryJsImpl({String? type, dynamic coordinates});
 }

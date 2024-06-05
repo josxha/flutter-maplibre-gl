@@ -2,18 +2,19 @@
 library maplibre.interop.ui.control.navigation_control;
 
 import 'dart:js_interop';
+
 import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
 
 @JS()
 @anonymous
-class NavigationControlOptionsJsImpl {
+extension type NavigationControlOptionsJsImpl._(JSObject _) {
   external bool get showCompass;
 
   external bool get showZoom;
 
   external bool get visualizePitch;
 
-  external factory NavigationControlOptionsJsImpl({
+  external NavigationControlOptionsJsImpl({
     bool? showCompass,
     bool? showZoom,
     bool? visualizePitch,
@@ -33,11 +34,10 @@ class NavigationControlOptionsJsImpl {
 /// @see [Display map navigation controls](https://maplibre.org/maplibre-gl-js/docs/examples/navigation/)
 /// @see [Add a third party vector tile source](https://maplibre.org/maplibre-gl-js/docs/examples/third-party/)
 @JS('NavigationControl')
-class NavigationControlJsImpl {
+extension type NavigationControlJsImpl._(JSObject _) {
   external NavigationControlOptionsJsImpl get options;
 
-  external factory NavigationControlJsImpl(
-      NavigationControlOptionsJsImpl options);
+  external NavigationControlJsImpl(NavigationControlOptionsJsImpl options);
 
   external onAdd(MapLibreMapJsImpl map);
 

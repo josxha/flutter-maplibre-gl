@@ -7,7 +7,7 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-abstract class BoxZoomHandlerJsImpl {
+extension type BoxZoomHandlerJsImpl._(JSObject _) {
   ///  Returns a Boolean indicating whether the "box zoom" interaction is enabled.
   ///
   ///  @returns {boolean} `true` if the "box zoom" interaction is enabled.

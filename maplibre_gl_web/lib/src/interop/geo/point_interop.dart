@@ -5,12 +5,10 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-class PointJsImpl {
+extension type PointJsImpl._(JSObject _) {
   external num get x;
+
   external num get y;
 
-  external factory PointJsImpl({
-    num x,
-    num y,
-  });
+  external PointJsImpl({num x, num y});
 }

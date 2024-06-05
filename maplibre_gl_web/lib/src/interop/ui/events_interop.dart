@@ -9,7 +9,7 @@ import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
 
 @JS()
 @anonymous
-abstract class MapMouseEventJsImpl {
+extension type MapMouseEventJsImpl._(JSObject _) {
   /// The event type.
   external String get type;
 
@@ -41,7 +41,7 @@ abstract class MapMouseEventJsImpl {
 
 @JS()
 @anonymous
-abstract class MapTouchEventJsImpl {
+extension type MapTouchEventJsImpl._(JSObject _) {
   /// The event type.
   external String get type;
 
