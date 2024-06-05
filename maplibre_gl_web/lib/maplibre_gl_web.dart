@@ -7,9 +7,6 @@ import 'dart:js_interop';
 // ignore_for_file: avoid_web_libraries_in_flutter
 import 'package:web/web.dart' as web hide Event;
 
-// ignore: unused_import
-import 'dart:js';
-import 'dart:js_util';
 import 'dart:math';
 import 'dart:ui' as ui;
 import 'package:flutter/services.dart';

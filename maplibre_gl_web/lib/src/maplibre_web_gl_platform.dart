@@ -183,18 +183,18 @@ class MapLibreMapController extends MapLibrePlatform
       {Duration? duration}) async {
     final cameraOptions = Convert.toCameraOptions(cameraUpdate, _map).jsObject;
 
-    final around = getProperty(cameraOptions, 'around');
-    final bearing = getProperty(cameraOptions, 'bearing');
-    final center = getProperty(cameraOptions, 'center');
-    final pitch = getProperty(cameraOptions, 'pitch');
-    final zoom = getProperty(cameraOptions, 'zoom');
+    final around = cameraOptions.around;
+    final bearing = cameraOptions.bearing;
+    final center = cameraOptions.center;
+    final pitch = cameraOptions.pitch;
+    final zoom = cameraOptions.zoom;
 
     _map.flyTo({
       if (around != null) 'around': around,
-      if (bearing != null) 'bearing': bearing,
+      'bearing': bearing,
       if (center != null) 'center': center,
-      if (pitch != null) 'pitch': pitch,
-      if (zoom != null) 'zoom': zoom,
+      'pitch': pitch,
+      'zoom': zoom,
       if (duration != null) 'duration': duration.inMilliseconds,
     });
 
