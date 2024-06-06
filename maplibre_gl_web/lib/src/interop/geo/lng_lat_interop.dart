@@ -22,7 +22,7 @@ import 'package:maplibre_gl_web/src/interop/geo/lng_lat_bounds_interop.dart';
 ///  @see [Highlight features within a bounding box](https://maplibre.org/maplibre-gl-js/docs/examples/using-box-queryrenderedfeatures/)
 ///  @see [Create a timeline animation](https://maplibre.org/maplibre-gl-js/docs/examples/timeline-animation/)
 @JS('LngLat')
-extension type LngLatJsImpl._(JSObject _) {
+extension type LngLatJsImpl._(JSObject _) implements JSObject {
   external num get lng;
 
   external num get lat;

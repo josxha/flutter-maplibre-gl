@@ -5,7 +5,7 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-extension type PointJsImpl._(JSObject _) {
+extension type PointJsImpl._(JSObject _) implements JSObject {
   external num get x;
 
   external num get y;

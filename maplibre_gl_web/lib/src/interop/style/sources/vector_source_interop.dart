@@ -5,7 +5,7 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-extension type VectorSourceJsImpl._(JSObject _) {
+extension type VectorSourceJsImpl._(JSObject _) implements JSObject {
   external String get url;
 
   external List<String> get tiles;

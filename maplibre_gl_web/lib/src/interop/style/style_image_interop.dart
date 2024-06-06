@@ -6,7 +6,7 @@ import 'package:maplibre_gl_web/src/interop/interop.dart';
 
 @JS()
 @anonymous
-extension type StyleImageJsImpl._(JSObject _) {
+extension type StyleImageJsImpl._(JSObject _) implements JSObject {
   external dynamic get data;
 
   external num get pixelRatio;
@@ -22,7 +22,7 @@ extension type StyleImageJsImpl._(JSObject _) {
 
 @JS()
 @anonymous
-extension type StyleImageInterfaceJsImpl._(JSObject _) {
+extension type StyleImageInterfaceJsImpl._(JSObject _) implements JSObject {
   external num get width;
 
   external num get height;

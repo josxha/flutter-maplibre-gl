@@ -7,7 +7,7 @@ import 'package:maplibre_gl_web/src/interop/ui/map_interop.dart';
 
 @JS()
 @anonymous
-extension type AttributionControlOptionsJsImpl._(JSObject _) {
+extension type AttributionControlOptionsJsImpl._(JSObject _) implements JSObject {
   external bool get compact;
 
   external List<String>? get customAttribution;
@@ -27,7 +27,7 @@ extension type AttributionControlOptionsJsImpl._(JSObject _) {
 /// map.addControl(attribution, 'top-left');
 /// @see [Display map attribution controls](https://maplibre.org/maplibre-gl-js/docs/examples/attribution-position/)
 @JS('AttributionControl')
-extension type AttributionControlJsImpl._(JSObject _) {
+extension type AttributionControlJsImpl._(JSObject _) implements JSObject {
   external AttributionControlOptionsJsImpl get options;
 
   external AttributionControlJsImpl(AttributionControlOptionsJsImpl options);

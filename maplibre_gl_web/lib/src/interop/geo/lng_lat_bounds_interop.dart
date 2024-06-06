@@ -21,7 +21,7 @@ import 'package:maplibre_gl_web/src/interop/geo/lng_lat_interop.dart';
 ///  var ne = new maplibregl.LngLat(-73.9397, 40.8002);
 ///  var llb = new maplibregl.LngLatBounds(sw, ne);
 @JS('LngLatBounds')
-extension type LngLatBoundsJsImpl._(JSObject _) {
+extension type LngLatBoundsJsImpl._(JSObject _) implements JSObject {
   external LngLatJsImpl get sw;
 
   external LngLatJsImpl get ne;

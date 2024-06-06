@@ -4,7 +4,7 @@ import 'dart:js_interop';
 
 import 'package:maplibre_gl_web/src/style/layers/circle_layer.dart';
 
-extension type CircleLayerJsImpl._(JSObject _) {
+extension type CircleLayerJsImpl._(JSObject _) implements JSObject {
   static toJs(CircleLayer circleLayer) => toDict(circleLayer).jsify();
 
   static toDict(CircleLayer circleLayer) {
@@ -27,7 +27,7 @@ extension type CircleLayerJsImpl._(JSObject _) {
   }
 }
 
-extension type CirclePaintJsImpl._(JSObject _) {
+extension type CirclePaintJsImpl._(JSObject _) implements JSObject {
   static toJs(CirclePaint circlePaint) => toDict(circlePaint).jsify();
 
   static toDict(CirclePaint circlePaint) {

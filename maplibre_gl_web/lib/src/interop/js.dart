@@ -5,7 +5,7 @@ import 'dart:js_interop';
 
 /// This class is a wrapper for the jsObject. All the specific JsObject
 /// wrappers extend from it.
-abstract class JsObjectWrapper<T> {
+abstract class JsObjectWrapper<T extends JSObject> {
   /// JS object.
   final T jsObject;
 

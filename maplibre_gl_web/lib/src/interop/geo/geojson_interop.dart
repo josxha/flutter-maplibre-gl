@@ -5,7 +5,7 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-extension type FeatureCollectionJsImpl._(JSObject _) {
+extension type FeatureCollectionJsImpl._(JSObject _) implements JSObject {
   external String get type;
 
   external List<FeatureJsImpl> get features;
@@ -18,7 +18,7 @@ extension type FeatureCollectionJsImpl._(JSObject _) {
 
 @JS()
 @anonymous
-extension type FeatureJsImpl._(JSObject _) {
+extension type FeatureJsImpl._(JSObject _) implements JSObject {
   external dynamic get id;
 
   external set id(dynamic id);
@@ -42,7 +42,7 @@ extension type FeatureJsImpl._(JSObject _) {
 
 @JS()
 @anonymous
-extension type GeometryJsImpl._(JSObject _) {
+extension type GeometryJsImpl._(JSObject _) implements JSObject {
   external String get type;
 
   external dynamic get coordinates;

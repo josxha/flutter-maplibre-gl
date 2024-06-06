@@ -28,7 +28,7 @@ import 'package:web/web.dart';
 /// @see [Add custom icons with Markers](https://maplibre.org/maplibre-gl-js/docs/examples/custom-marker-icons/)
 /// @see [Create a draggable Marker](https://maplibre.org/maplibre-gl-js/docs/examples/drag-a-marker/)
 @JS('Marker')
-extension type MarkerJsImpl._(EventedJsImpl _) {
+extension type MarkerJsImpl._(EventedJsImpl _) implements EventedJsImpl {
   external MarkerJsImpl([MarkerOptionsJsImpl? options]);
 
   ///  Attaches the marker to a map
@@ -122,7 +122,7 @@ extension type MarkerJsImpl._(EventedJsImpl _) {
 
 @JS()
 @anonymous
-extension type MarkerOptionsJsImpl._(JSObject _) {
+extension type MarkerOptionsJsImpl._(JSObject _) implements JSObject {
   external MarkerOptionsJsImpl({
     HTMLElement? element,
     PointJsImpl? offset,

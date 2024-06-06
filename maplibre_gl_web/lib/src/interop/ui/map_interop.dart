@@ -46,7 +46,7 @@ import 'package:maplibre_gl_web/src/interop/ui/handler/touch_zoom_rotate_interop
 ///  ```
 ///  @see [Display a map](https://maplibre.org/maplibre-gl-js/docs/examples/simple-map/)
 @JS('Map')
-extension type MapLibreMapJsImpl._(CameraJsImpl _) {
+extension type MapLibreMapJsImpl._(CameraJsImpl _) implements CameraJsImpl {
   external MapLibreMapJsImpl(MapOptionsJsImpl options);
 
   external StyleJsImpl get style;
@@ -1163,7 +1163,7 @@ typedef RequestTransformFunctionJsImpl = RequestParametersJsImpl Function(
 
 @JS()
 @anonymous
-extension type RequestParametersJsImpl._(JSObject _) {
+extension type RequestParametersJsImpl._(JSObject _) implements JSObject {
   external String? url;
   external String? credentials;
   external dynamic headers;

@@ -7,7 +7,7 @@ import 'package:maplibre_gl_web/src/interop/geo/geojson_interop.dart';
 
 @JS()
 @anonymous
-extension type GeoJsonSourceJsImpl._(JSObject _) {
+extension type GeoJsonSourceJsImpl._(JSObject _) implements JSObject {
   external FeatureCollectionJsImpl get data;
 
   external String get promoteId;

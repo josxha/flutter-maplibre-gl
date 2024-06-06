@@ -53,7 +53,7 @@ import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';
 /// @see [Display a popup on click](https://maplibre.org/maplibre-gl-js/docs/examples/popup-on-click/)
 /// @see [Attach a popup to a marker instance](https://maplibre.org/maplibre-gl-js/docs/examples/set-popup/)
 @JS('Popup')
-extension type PopupJsImpl._(EventedJsImpl _) {
+extension type PopupJsImpl._(EventedJsImpl _) implements EventedJsImpl {
   external dynamic get options;
 
   external PopupJsImpl([PopupOptionsJsImpl? options]);
@@ -184,7 +184,7 @@ extension type PopupJsImpl._(EventedJsImpl _) {
 
 @JS()
 @anonymous
-extension type PopupOptionsJsImpl._(JSObject _) {
+extension type PopupOptionsJsImpl._(JSObject _) implements JSObject {
   external PopupOptionsJsImpl({
     bool? loseButton,
     bool? closeButton,

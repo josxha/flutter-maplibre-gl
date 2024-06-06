@@ -22,7 +22,7 @@ import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';
 ///  @property {LngLatLike} around If `zoom` is specified, `around` determines the point around which the zoom is centered.
 @JS()
 @anonymous
-extension type CameraOptionsJsImpl._(JSObject _) {
+extension type CameraOptionsJsImpl._(JSObject _) implements JSObject {
   external LngLatJsImpl get center;
 
   external num get zoom;
@@ -56,7 +56,7 @@ extension type CameraOptionsJsImpl._(JSObject _) {
 ///    [`prefers-reduced-motion`](https://developer.mozilla.org/en-US/docs/Web/CSS/@media/prefers-reduced-motion).
 @JS()
 @anonymous
-extension type AnimationOptionsJsImpl._(JSObject _) {
+extension type AnimationOptionsJsImpl._(JSObject _) implements JSObject {
   external num get duration;
 
   external num Function(num time) get easing;
@@ -86,7 +86,7 @@ extension type AnimationOptionsJsImpl._(JSObject _) {
 ///  @property {number} right Padding in pixels from the right of the map canvas.
 @JS()
 @anonymous
-extension type PaddingOptionsJsImpl._(JSObject _) {
+extension type PaddingOptionsJsImpl._(JSObject _) implements JSObject {
   external num get top;
 
   external num get bottom;
@@ -104,7 +104,7 @@ extension type PaddingOptionsJsImpl._(JSObject _) {
 }
 
 @JS('Camera')
-extension type CameraJsImpl._(EventedJsImpl _) {
+extension type CameraJsImpl._(EventedJsImpl _) implements JSObject {
   ///  Returns the map's geographical centerpoint.
   ///
   ///  @memberof MapLibreMap#

@@ -7,7 +7,7 @@ import 'dart:js_interop';
 
 @JS()
 @anonymous
-extension type DragRotateHandlerJsImpl._(JSObject _) {
+extension type DragRotateHandlerJsImpl._(JSObject _) implements JSObject {
   ///  Returns a Boolean indicating whether the "drag to rotate" interaction is enabled.
   ///
   ///  @returns {boolean} `true` if the "drag to rotate" interaction is enabled.

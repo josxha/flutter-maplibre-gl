@@ -6,7 +6,7 @@ import 'package:maplibre_gl_web/src/interop/ui/events_interop.dart';
 
 @JS()
 @anonymous
-extension type DoubleClickZoomHandlerJsImpl._(JSObject _) {
+extension type DoubleClickZoomHandlerJsImpl._(JSObject _) implements JSObject {
   ///  Returns a Boolean indicating whether the "double click to zoom" interaction is enabled.
   ///
   ///  @returns {boolean} `true` if the "double click to zoom" interaction is enabled.

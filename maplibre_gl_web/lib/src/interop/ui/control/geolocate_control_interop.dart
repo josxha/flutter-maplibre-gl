@@ -8,7 +8,7 @@ import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';
 
 @JS()
 @anonymous
-extension type GeolocateControlOptionsJsImpl._(JSObject _) {
+extension type GeolocateControlOptionsJsImpl._(JSObject _) implements JSObject {
   external PositionOptionsJsImpl get positionOptions;
 
   external dynamic get fitBoundsOptions;
@@ -30,7 +30,7 @@ extension type GeolocateControlOptionsJsImpl._(JSObject _) {
 
 @JS()
 @anonymous
-extension type PositionOptionsJsImpl._(JSObject _) {
+extension type PositionOptionsJsImpl._(JSObject _) implements JSObject {
   external bool get enableHighAccuracy;
 
   external num get maximumAge;
@@ -45,7 +45,7 @@ extension type PositionOptionsJsImpl._(JSObject _) {
 }
 
 @JS('GeolocateControl')
-extension type GeolocateControlJsImpl._(EventedJsImpl _) {
+extension type GeolocateControlJsImpl._(EventedJsImpl _) implements EventedJsImpl {
   external GeolocateControlOptionsJsImpl get options;
 
   external GeolocateControlJsImpl(GeolocateControlOptionsJsImpl options);

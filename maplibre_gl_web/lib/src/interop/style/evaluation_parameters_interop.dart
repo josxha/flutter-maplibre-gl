@@ -4,7 +4,7 @@ library maplibre.interop.style.evaluation_parameters;
 import 'dart:js_interop';
 
 @JS('EvaluationParameters')
-extension type EvaluationParametersJsImpl._(JSObject _) {
+extension type EvaluationParametersJsImpl._(JSObject _) implements JSObject {
   external num get zoom;
   external num get now;
   external num get fadeDuration;
