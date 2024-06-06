@@ -11,7 +11,7 @@ typedef ListenerJsImpl = dynamic Function(EventJsImpl object);
 
 @JS()
 @anonymous
-abstract class EventJsImpl {
+extension type EventJsImpl._(JSObject _) implements JSObject {
   external String get id;
   external String get type;
   external LngLatJsImpl get lngLat;

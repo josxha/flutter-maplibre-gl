@@ -9,7 +9,7 @@ import 'package:maplibre_gl_web/src/interop/util/evented_interop.dart';
 
 @JS()
 @anonymous
-abstract class StyleSetterOptionsJsImpl {
+extension type StyleSetterOptionsJsImpl._(JSObject _) implements JSObject {
   external bool get validate;
 }
 

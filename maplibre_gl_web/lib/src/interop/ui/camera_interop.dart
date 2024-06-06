@@ -104,7 +104,7 @@ extension type PaddingOptionsJsImpl._(JSObject _) implements JSObject {
 }
 
 @JS('Camera')
-extension type CameraJsImpl._(EventedJsImpl _) implements JSObject {
+extension type CameraJsImpl._(EventedJsImpl _) implements EventedJsImpl {
   ///  Returns the map's geographical centerpoint.
   ///
   ///  @memberof MapLibreMap#
